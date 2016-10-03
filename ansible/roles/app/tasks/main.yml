@@ -1,0 +1,47 @@
+---
+- name: Copy local configs
+  template: >
+    src=templates/symfony/{{item}}.j2
+    dest={{app_config_dir}}/{{item}}
+  become: true
+  become_user: vagrant
+  with_items:
+    - parameters.yml
+
+- name: install vendors
+  composer: command=install working_dir=/vagrant no_dev=no
+
+- name: clear cache
+  shell: "php bin/console cache:clear -e=prod"
+  args:
+    chdir: "/vagrant"
+
+- name: import migrations
+  shell: "php bin/console doctrine:migrations:migrate -n"
+  args:
+    chdir: "/vagrant"
+
+#- name: npm install --no-bin-links
+#  shell: npm install --no-bin-links
+#  args:
+#    chdir: "/vagrant/front"
+
+#- name: bower install --force
+#  shell: bower install --force
+#  args:
+#    chdir: "/vagrant/front"
+
+#- name: build client
+#  shell: gulp build --side client
+#  args:
+#    chdir: "/vagrant/front"
+
+#- name: build admin
+#  shell: gulp build --side admin
+#  args:
+#    chdir: "/vagrant/front"
+
+#- name: App | Make front
+#  shell: "make"
+#  args:
+#    chdir: "/vagrant/front"

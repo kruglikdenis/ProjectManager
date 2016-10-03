@@ -1,0 +1,14 @@
+---
+
+- name: Add node.js repository
+  become: true
+  apt_repository: repo='deb http://ppa.launchpad.net/rwky/nodejs/ubuntu trusty main' state=present update-cache=yes
+
+- name: Install nodejs and npm
+  become: true
+  apt: pkg=nodejs state=present force=yes
+
+- name: Install npm packages global
+  npm: name={{ item }} global=yes
+  become: true
+  with_items: npm_global_packages
