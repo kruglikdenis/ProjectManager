@@ -1,12 +1,18 @@
-import './polyfills.ts';
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { environment } from './environments/environment';
-import { AppModule } from './app/';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-if (environment.production) {
+// depending on the env mode, enable prod mode or add debugging modules
+if (process.env.ENV === 'build') {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+export function main() {
+  return platformBrowserDynamic().bootstrapModule(AppModule);
+}
+
+if (document.readyState === 'complete') {
+  main();
+} else {
+  document.addEventListener('DOMContentLoaded', main);
+}
