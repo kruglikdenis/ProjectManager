@@ -1,0 +1,8 @@
+resetting:
+    email:
+        subject: Восстановление паролся. Seed
+        message: |
+           Добрый день.
+
+           Ваш пароль от сервиса Seed был сброшен.
+           Новый пароль %password%

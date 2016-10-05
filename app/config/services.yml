@@ -1,9 +1,31 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
+imports:
+    - { resource: managers.yml }
+    - { resource: repositories.yml }
+
 parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    ### Services
+    app.security.api_user_provider:
+        class: AppBundle\Security\User\ApiUserProvider
+        arguments:
+            - "@app.repository.user.user"
+            - "@app.repository.user.user_session"
+
+    app.security.api_token_authenticator:
+        class: AppBundle\Security\Authentication\ApiTokenAuthenticator
+        arguments:
+            - "@app.security.api_user_provider"
+
+    app.security.user_password_encoder:
+        class: AppBundle\Security\User\UserPasswordEncoder
+        arguments:
+            - "@security.encoder_factory.generic"
+            - "CoreDomain\\Model\\User\\User"
+
+    ### Listeners
+    app.listener.domain.exception:
+        class: AppBundle\Listener\DomainExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onDomainException }

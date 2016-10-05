@@ -1,5 +1,5 @@
 {
-    "name": "kruglikdenis/symfony.angular2.skeleton",
+    "name": "kruglikdenis/project-manager",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -30,7 +30,13 @@
         "symfony/polyfill-apcu": "^1.0",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "nelmio/cors-bundle": "~1.4.0",
+        "ramsey/uuid": "~2.8",
+        "guzzlehttp/guzzle": "^6.0",
+        "friendsofsymfony/rest-bundle": "dev-master",
+        "jms/serializer-bundle": "dev-master",
+        "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

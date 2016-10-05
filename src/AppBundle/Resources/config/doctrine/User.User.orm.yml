@@ -1,0 +1,43 @@
+CoreDomain\Model\User\User:
+    type: entity
+    table: users
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        lastName:
+            column: last_name
+            type: string
+            nullable: true
+        firstName:
+            column: first_name
+            type: string
+            nullable: true
+        middleName:
+            column: middle_name
+            type: string
+            nullable: true
+        email:
+            type: string
+            unique: true
+        phone:
+            type: string
+            nullable: true
+        city:
+            type: string
+            nullable: true
+        birthday:
+            type: date
+            nullable: true
+        lastAuthDate:
+            column: last_auth_date
+            type: datetime
+            nullable: true
+        password:
+            type: string
+        salt:
+            type: string
+            nullable: false
+        roles:
+            type: array

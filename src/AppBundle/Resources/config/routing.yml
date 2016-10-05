@@ -1,0 +1,9 @@
+app_user:
+    resource: AppBundle\Controller\User\UserController
+    type: rest
+    name_prefix: user_
+
+app_session:
+    resource: AppBundle\Controller\User\UserSessionController
+    type: rest
+    name_prefix: session_

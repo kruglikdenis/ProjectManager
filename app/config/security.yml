@@ -1,24 +1,34 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+        CoreDomain\Model\User\User:
+            algorithm: bcrypt
+            cost: 13
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_SHOP_OWNER: [ROLE_USER]
+        ROLE_ADMIN: [ROLE_SHOP_OWNER]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+
     providers:
-        in_memory:
-            memory: ~
+        api_provider:
+            id: app.security.api_user_provider
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-
-        main:
+        api:
+            pattern: ^/api
+            provider: api_provider
+            stateless: true
             anonymous: ~
-            # activate different ways to authenticate
+            simple_preauth:
+                authenticator: app.security.api_token_authenticator
+        default:
+            anonymous: ~
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: /api/(sessions|users), roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [POST] }
+        - { path: /api/sessions$, roles: ROLE_USER, methods: [DELETE] }
+        # - { path: /api/users/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/users, role: ROLE_USER }

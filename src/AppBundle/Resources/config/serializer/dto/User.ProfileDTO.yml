@@ -1,0 +1,43 @@
+CoreDomain\DTO\User\ProfileDTO:
+    exclusion_policy: ALL
+    properties:
+        email:
+            type: string
+            groups:
+                - api_user_patch
+        password:
+            expose: true
+            type: string
+            groups:
+                - api_user_patch
+        firstName:
+            serialized_name: first_name
+            type: string
+            groups:
+                - api_user_patch
+        phone:
+            type: string
+            groups:
+                - api_user_patch
+        lastName:
+            serialized_name: last_name
+            type: string
+            groups:
+                - api_user_patch
+        middleName:
+            serialized_name: middle_name
+            type: string
+            groups:
+                - api_user_patch
+        city:
+            type: string
+            groups:
+                - api_user_patch
+        birthday:
+            type: DateTime<'Y-m-d'>
+            groups:
+                - api_user_patch
+        roles:
+            type: array
+            groups:
+                - api_user_patch

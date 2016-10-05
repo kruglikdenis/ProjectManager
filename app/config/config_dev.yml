@@ -11,16 +11,37 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
+nelmio_cors:
+   paths:
+    '^/api/':
+        allow_credentials: true
+        allow_origin: ['*']
+        expose_headers: ['X-Total-Count']
+        allow_headers: ['origin', 'content-type', 'X-Custom-Auth', 'authorization']
+        allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'PATCH', 'OPTIONS']
+        max_age: 3600
+
 monolog:
     handlers:
         main:
-            type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
-            channels: [!event]
+            type:   stream
+            path:   "%kernel.logs_dir%/%kernel.environment%.log"
+            level:  debug
         console:
             type:   console
-            channels: [!event, !doctrine]
+            bubble: false
+            verbosity_levels:
+                VERBOSITY_VERBOSE: INFO
+                VERBOSITY_VERY_VERBOSE: DEBUG
+            channels: ["!doctrine"]
+        console_very_verbose:
+            type:   console
+            bubble: false
+            verbosity_levels:
+                VERBOSITY_VERBOSE: NOTICE
+                VERBOSITY_VERY_VERBOSE: NOTICE
+                VERBOSITY_DEBUG: DEBUG
+            channels: ["doctrine"]
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:
@@ -29,6 +50,9 @@ monolog:
         #chromephp:
         #    type:   chromephp
         #    level:  info
+
+assetic:
+    use_controller: true
 
 #swiftmailer:
 #    delivery_address: me@example.com

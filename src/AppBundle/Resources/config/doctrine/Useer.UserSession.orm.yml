@@ -1,0 +1,27 @@
+CoreDomain\Model\User\UserSession:
+    type: entity
+    table: user_session
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        token:
+            type: string
+            length: 255
+            unique: true
+        loginDate:
+            column: login_date
+            type: datetime
+            nullable: false
+        logoutDate:
+            column: logout_date
+            type: datetime
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: CoreDomain\Model\User\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                onDelete: CASCADE

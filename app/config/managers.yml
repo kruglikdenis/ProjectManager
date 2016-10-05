@@ -1,0 +1,11 @@
+services:
+
+    # User
+    app.managers.user.user:
+        class: AppBundle\Services\Managers\User\UserManager
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+            - "@app.repository.user.user"
+            - "@app.repository.user.user_session"
+            - "@app.security.user_password_encoder"
+            - "@validator"

@@ -1,0 +1,11 @@
+services:
+
+    app.repository.user.user:
+        class: AppBundle\Repository\User\UserRepository
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+
+    app.repository.user.user_session:
+        class: AppBundle\Repository\User\UserSessionRepository
+        arguments:
+            - "@doctrine.orm.default_entity_manager"

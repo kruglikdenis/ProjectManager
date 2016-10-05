@@ -1,0 +1,53 @@
+CoreDomain\Model\User\User:
+    exclusion_policy: ALL
+    properties:
+        id:
+            type: integer
+            groups:
+                - api_user_get
+                - api_session_get
+                - api_user_search
+        email:
+            type: string
+            groups:
+                - api_user_get
+                - api_session_get
+                - api_user_search
+        roles:
+            type: array
+            groups:
+                - api_user_get
+                - api_session_get
+        firstName:
+            type: string
+            groups:
+                - api_user_get
+                - api_user_search
+                - api_delivery_template_get
+                - api_delivery_template_list
+        lastName:
+            type: string
+            groups:
+                - api_user_get
+                - api_user_search
+                - api_delivery_template_get
+                - api_delivery_template_list
+        middleName:
+            type: string
+            groups:
+                - api_user_get
+                - api_user_search
+                - api_delivery_template_get
+                - api_delivery_template_list
+        city:
+            type: string
+            groups:
+                - api_user_get
+        phone:
+            type: string
+            groups:
+                - api_user_get
+        birthday:
+            type: DateTime<'Y-m-d'>
+            groups:
+                - api_user_get

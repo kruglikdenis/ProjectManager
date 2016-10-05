@@ -1,0 +1,34 @@
+CoreDomain\DTO\User\ProfileDTO:
+    properties:
+        password:
+            - Length:
+                min: 6
+                groups:
+                    - api_user_patch
+        email:
+            - Email:
+                groups:
+                    - api_user_patch
+            - NotBlank:
+                groups:
+                    - api_user_patch
+        firstName:
+            - NotBlank:
+                groups:
+                    - api_user_patch
+        lastName:
+            - NotBlank:
+                groups:
+                    - api_user_patch
+        middleName:
+            - NotBlank:
+                groups:
+                    - api_user_patch
+        phone:
+            - NotBlank:
+                groups:
+                    - api_user_patch
+        roles:
+            - NotBlank:
+                groups:
+                    - api_user_patch

@@ -1,0 +1,11 @@
+CoreDomain\Model\User\UserSession:
+    exclusion_policy: ALL
+    properties:
+        token:
+            type: string
+            groups:
+                - api_session_get
+        user:
+            type: CoreDomain\Model\User\User
+            groups:
+                - api_session_get
