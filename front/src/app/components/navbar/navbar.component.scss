@@ -27,7 +27,8 @@ ul.topnav li a {
     font-size: 14px;
 }
 
-ul.topnav li a:hover {
+
+ul.topnav li a:hover, .is-active {
   background-color: $teal-light-color;
 }
 
