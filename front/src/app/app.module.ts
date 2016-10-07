@@ -2,13 +2,15 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component'
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
+
+import { MaterialModule } from "@angular/material";
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -17,13 +19,16 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
+
     MaterialModule,
+
     routing
   ],
   declarations: [
     AppComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   providers: [
     ApiService

@@ -9,18 +9,28 @@ ul.topnav {
     background-color: $teal-color;
 }
 
-ul.topnav li {float: left;}
+ul.topnav li.position-left {
+  float: left;
+}
+
+ul.topnav li.position-right {
+  float: right;
+}
 
 ul.topnav li a {
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 2px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 14px;
 }
 
-ul.topnav li a:hover {background-color: $teal-light-color;}
+ul.topnav li a:hover {
+  background-color: $teal-light-color;
+}
 
-ul.topnav li.icon {display: none;}
+ul.topnav li.icon {
+  display: none;
+}
