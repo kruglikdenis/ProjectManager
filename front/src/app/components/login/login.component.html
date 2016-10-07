@@ -1,3 +1,17 @@
-<p>
-  Login
-</p>
+<md-card class="login-container">
+  <md-card-header>
+      <md-icon class="circle-icon">people</md-icon>
+      <span>Log in</span>
+  </md-card-header>
+  <form>
+    <md-input placeholder="Email"></md-input>
+    <md-input placeholder="Password" type="password"></md-input>
+    <div flex-xs="100" flex="50">
+      <md-checkbox class="md-warn pm-checkbox" aria-label="Remeber me">
+        <span class="pm-checkbox-label">Remember me</span>
+      </md-checkbox>
+    </div>
+
+    <button md-raised-button class="md-raised md-primary">Log in</button>
+  </form>
+</md-card>

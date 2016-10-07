@@ -1,0 +1,61 @@
+$tail-color: #004D40;
+$gray-color: #FAFAFA;
+
+.login-container {
+  width: 40%;
+  margin: 100px auto;
+  padding: 40px 60px 60px 60px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: $gray-color;
+  md-input {
+    width: 100%;
+    margin-bottom: 10px;
+    input {
+      background-color: black;
+    }
+  }
+  md-icon {
+    margin-right: 10px;
+    margin-left: -20px;
+  }
+  button {
+    margin: 20px auto 0px;
+  }
+  md-card-header {
+    span {
+      margin-top: 10px;
+    }
+  }
+}
+.login-container:hover {
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+.pm-checkbox {
+  color: gray;
+}
+.pm-checkbox:hover {
+  color: $tail-color;
+}
+
+.pm-checkbox-label {
+  margin-left: 10px;
+  color: gray;
+}
+
+.md-checkbox-inner-container {
+  color: $tail-color;
+}
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  background: $tail-color;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}

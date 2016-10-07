@@ -7,6 +7,7 @@ ul.topnav {
     padding: 0;
     overflow: hidden;
     background-color: $teal-color;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 ul.topnav li.position-left {
@@ -25,6 +26,7 @@ ul.topnav li a {
     text-decoration: none;
     transition: 0.3s;
     font-size: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 ul.topnav li a:hover, .is-active {
