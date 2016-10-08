@@ -7,12 +7,10 @@ import '../style/app.scss';
     selector: 'pm-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    viewProviders: [MdIconRegistry],
+    viewProviders: [MdIconRegistry]
 })
 export class AppComponent {
-    constructor(
-        mdIconRegistry: MdIconRegistry
-    ) {
+    constructor (mdIconRegistry: MdIconRegistry) {
         mdIconRegistry
             .addSvgIcon('thumb-up', './../assets/icons/thumbup-icon.svg')
             .addSvgIconSetInNamespace('core', './../assets/icons/core-icon-set.svg')
