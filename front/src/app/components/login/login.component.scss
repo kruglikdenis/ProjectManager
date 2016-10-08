@@ -8,15 +8,11 @@ $gray-color: #FAFAFA;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   background-color: $gray-color;
   md-input {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
     input {
       background-color: black;
     }
-  }
-  md-icon {
-    margin-right: 10px;
-    margin-left: -20px;
   }
   button {
     margin: 20px auto 0px;
@@ -58,4 +54,30 @@ $gray-color: #FAFAFA;
   text-align: center;
   background: $tail-color;
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  margin-right: 10px;
+  margin-left: -20px;
+}
+
+
+
+.section {
+  @keyframes color {
+      from {color: gray;}
+      to {color: $tail-color;}
+  }
+
+  md-icon {
+    color: gray;
+  }
+  &:hover {
+    md-icon {
+      color: $tail-color;
+      animation-name: color;
+      animation-duration: 2s;
+    }
+  }
+}
+
+.lock-icon {
+
 }
