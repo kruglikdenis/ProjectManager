@@ -19,6 +19,10 @@ var ENV = process.env.npm_lifecycle_event;
 var isTestWatch = ENV === 'test-watch';
 var isTest = ENV === 'test' || isTestWatch;
 var isProd = ENV === 'build';
+var apiUrl = 'http://symfony.vagrant/api';
+if (isProd) {
+  apiUrl = 'http://symfony.vagrant/api';
+}
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -35,7 +39,7 @@ module.exports = function makeWebpackConfig() {
    */
   if (isProd) {
     config.devtool = 'source-map';
-  } 
+  }
   else if (isTest) {
     config.devtool = 'inline-source-map';
   }
@@ -86,7 +90,7 @@ module.exports = function makeWebpackConfig() {
   if (isTest && !isTestWatch) {
     // awesome-typescript-loader needs to output inlineSourceMap for code coverage to work with source maps.
     atlOptions = 'inlineSourceMap=true&sourceMap=false';
-  } 
+  }
 
   /**
    * Loaders
@@ -164,7 +168,8 @@ module.exports = function makeWebpackConfig() {
       // Environment helpers
       'process.env': {
         ENV: JSON.stringify(ENV)
-      }
+      },
+      'API_URL': JSON.stringify(apiUrl)
     })
   ];
 
