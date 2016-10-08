@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ApiService } from './shared';
 import { routing } from './app.routing';
 
 import { MaterialModule } from "@angular/material";
@@ -29,9 +28,6 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     LoginComponent,
     NavbarComponent,
     HomeComponent
-  ],
-  providers: [
-    ApiService
   ],
   bootstrap: [AppComponent]
 })
