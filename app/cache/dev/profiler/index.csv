@@ -1,0 +1,3 @@
+630111,172.28.128.1,GET,http://symfony.vagrant/app_dev.php/api/session,1475945481,3c0956,200
+3c0956,172.28.128.1,POST,http://symfony.vagrant/app_dev.php/api/session,1475945482,,404
+6c048e,172.28.128.1,POST,http://symfony.vagrant/app_dev.php/api/sessions,1475945509,,404

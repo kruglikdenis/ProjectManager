@@ -10,10 +10,10 @@ mailer_password: ~
 mailer_from: symfony@telecontact.ru
 
 after_deploy:
- - "bin/console --no-interaction cache:clear -e=prod"
- - "bin/console --no-interaction assets:install web --symlink -e=prod"
- - "bin/console --no-interaction assetic:dump -e=prod"
- - "bin/console --no-interaction doctrine:migration:migrate -e=prod"
+ - "app/console --no-interaction cache:clear -e=prod"
+ - "app/console --no-interaction assets:install web --symlink -e=prod"
+ - "app/console --no-interaction assetic:dump -e=prod"
+ - "app/console --no-interaction doctrine:migration:migrate -e=prod"
 
 nginx:
   install: '1'

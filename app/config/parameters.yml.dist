@@ -12,8 +12,10 @@ parameters:
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
+    mailer_port:       25
     mailer_user:       ~
     mailer_password:   ~
+    mailer_from:       noreply@callback.vagrant
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt

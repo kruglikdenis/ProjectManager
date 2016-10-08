@@ -4,11 +4,6 @@ security:
             algorithm: bcrypt
             cost: 13
 
-    role_hierarchy:
-        ROLE_SHOP_OWNER: [ROLE_USER]
-        ROLE_ADMIN: [ROLE_SHOP_OWNER]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
-
     providers:
         api_provider:
             id: app.security.api_user_provider

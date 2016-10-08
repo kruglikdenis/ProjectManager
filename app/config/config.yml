@@ -9,7 +9,7 @@ parameters:
     locale: ru
 
 sensio_framework_extra:
-    view:    { annotations: true }
+    view:    { annotations: false }
     request: { converters: true }
 
 framework:
@@ -35,7 +35,6 @@ framework:
         gc_probability: 0
     fragments:       ~
     http_method_override: true
-    serializer: true
 
 # Twig Configuration
 twig:
@@ -86,10 +85,26 @@ doctrine_migrations:
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
+    port:      "%mailer_port%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
 
+jms_serializer:
+    metadata:
+        auto_detection: false
+        directories:
+            core_model_serializer:
+                namespace_prefix: "CoreDomain\\Model"
+                path: "@AppBundle/Resources/config/serializer/model"
+            core_dto_serializer:
+                namespace_prefix: "CoreDomain\\DTO"
+                path: "@AppBundle/Resources/config/serializer/dto"
+            app_model_serializer:
+                namespace_prefix: "AppBundle\\Model"
+                path: "@AppBundle/Resources/config/serializer/model"
 fos_rest:
+    service:
+        serializer: jms_serializer.serializer
     serializer:
         serialize_null: true
     param_fetcher_listener: true
@@ -105,17 +120,3 @@ fos_rest:
         include_format: false
     access_denied_listener:
         json: true
-
-jms_serializer:
-    metadata:
-        auto_detection: false
-        directories:
-            core_model_serializer:
-                namespace_prefix: "CoreDomain\\Model"
-                path: "@AppBundle/Resources/config/serializer/model"
-            core_dto_serializer:
-                namespace_prefix: "CoreDomain\\DTO"
-                path: "@AppBundle/Resources/config/serializer/dto"
-            app_model_serializer:
-                namespace_prefix: "AppBundle\\Model"
-                path: "@AppBundle/Resources/config/serializer/model"

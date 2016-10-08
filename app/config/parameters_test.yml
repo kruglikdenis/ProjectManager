@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: tagsentinel_test
+    database_user: tagsentinel
+    database_password: tagsentinel
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_port: 25
+    mailer_user: null
+    mailer_password: null
+    mailer_from: noreply@tagsentinel.vagrant
+    secret: BM3L9938BRkLvGEE2UKNvtjSZ1
