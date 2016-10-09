@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/models/user';
-import { AuthService } from '../../shared/services/auth.service'
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
     selector: 'pm-login',
@@ -11,10 +11,15 @@ import { AuthService } from '../../shared/services/auth.service'
 export class LoginComponent implements OnInit {
     user: User;
 
-    constructor(private authService: AuthService) {}
+    constructor(
+        private authService: AuthService,
+    ) {
+
+    }
 
     login() {
-        this.authService.login(this.user);
+        this.authService.login(this.user)
+            .then(data => console.log(data));
     }
 
     ngOnInit() {

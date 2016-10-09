@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MdIconRegistry } from '@angular/material';
+import { BaseRestClient } from './shared/api/clients/base.rest-client';
+import { StorageService } from './shared/services/storage.service';
 
 import '../style/app.scss';
 
@@ -7,7 +9,8 @@ import '../style/app.scss';
     selector: 'pm-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    viewProviders: [MdIconRegistry]
+    viewProviders: [MdIconRegistry],
+    providers: [BaseRestClient, StorageService]
 })
 export class AppComponent {
     constructor (mdIconRegistry: MdIconRegistry) {
