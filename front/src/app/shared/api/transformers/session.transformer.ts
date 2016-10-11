@@ -8,7 +8,7 @@ export class SessionTransformer implements ITransformer {
         session.id = user.id;
         session.email = user.email;
         session.roles = user.roles || [];
-        console.log(session);
+
         return session;
     }
 }

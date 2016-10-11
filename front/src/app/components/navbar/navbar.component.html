@@ -2,7 +2,7 @@
   <li class="position-left">
     <a [routerLink]="['']" md-button>Home</a>
   </li>
-  <li class="position-right">
+  <li *ngIf="!user" class="position-right">
     <a [routerLink]="['login']" md-button>Log In</a>
   </li>
 </ul>

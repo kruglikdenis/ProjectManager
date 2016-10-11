@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MdIconRegistry } from '@angular/material';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
+import { AuthService } from './shared/services/auth.service';
 
 import '../style/app.scss';
 
@@ -10,7 +11,11 @@ import '../style/app.scss';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     viewProviders: [MdIconRegistry],
-    providers: [BaseRestClient, StorageService]
+    providers: [
+        BaseRestClient,
+        StorageService,
+        AuthService
+    ]
 })
 export class AppComponent {
     constructor (mdIconRegistry: MdIconRegistry) {

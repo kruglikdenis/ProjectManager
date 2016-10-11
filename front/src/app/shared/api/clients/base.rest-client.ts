@@ -17,26 +17,26 @@ export class BaseRestClient {
     }
 
     public get(url) {
-        let promice = this.http.get(this.baseUrl + url, {
-                headers: this.headers
-            })
+        let promice = this.http
+            .get(this.baseUrl + url, {headers: this.headers})
             .toPromise()
             .then(this.extractData);
+
         if (this.transformer) {
-            promice.then(this.transformer.transform);
+            promice = promice.then(this.transformer.transform);
         }
 
         return promice;
     }
 
     public post(url, data) {
-        let promice = this.http.post(this.baseUrl + url, data, {
-                headers: this.headers
-            })
+        let promice = this.http
+            .post(this.baseUrl + url, data, {headers: this.headers})
             .toPromise()
             .then(this.extractData);
+
         if (this.transformer) {
-            promice.then(this.transformer.transform);
+            promice = promice.then(this.transformer.transform);
         }
 
         return promice;
