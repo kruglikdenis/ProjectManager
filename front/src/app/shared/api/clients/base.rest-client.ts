@@ -1,58 +1,84 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { ITransformer } from '../transformers/interface.transformer';
+import { StorageService } from '../../services/storage.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BaseRestClient {
 
+    private AUTHORIZATION_HEADER = 'Authorization';
+
     private baseUrl = API_URL;
     private headers: Headers;
-    private transformer: ITransformer;
+    private ;
 
-    constructor(private http: Http) {
+    constructor(
+        private http: Http,
+        private storageService: StorageService
+    ) {
         this.headers = new Headers({
             'Content-Type': 'application/json'
         });
     }
 
-    public get(url) {
-        let promice = this.http
-            .get(this.baseUrl + url, {headers: this.headers})
+    public get(url, transformer: ITransformer) {
+        let observable = this.authorize()
+            .http
+            .get(this.baseUrl + url, {headers: this.headers});
+
+        return this.toPromice(observable, transformer);
+    }
+
+    public post(url, data, transformer: ITransformer) {
+        let observable = this.authorize()
+            .http
+            .post(this.baseUrl + url, data, {headers: this.headers});
+
+        return this.toPromice(observable, transformer);
+    }
+
+    public delete(url, transformer: ITransformer) {
+        let observable = this.authorize()
+            .http
+            .delete(this.baseUrl + url, {headers: this.headers});
+
+        return this.toPromice(observable, transformer);
+    }
+
+    private toPromice(observable: Observable<Response>, transformer: ITransformer) {
+        let promice = observable
             .toPromise()
             .then(this.extractData);
 
-        if (this.transformer) {
-            promice = promice.then(this.transformer.transform);
+        if (transformer) {
+            promice = promice.then(transformer.transform);
         }
 
         return promice;
     }
 
-    public post(url, data) {
-        let promice = this.http
-            .post(this.baseUrl + url, data, {headers: this.headers})
-            .toPromise()
-            .then(this.extractData);
-
-        if (this.transformer) {
-            promice = promice.then(this.transformer.transform);
+    private extractData(responce: Response) {
+        if (responce.status >= 200 && responce.status < 300) {
+            if (responce.status !== 204) {
+                return responce.json();
+            }
         }
 
-        return promice;
+        return {};
     }
 
-    public appendHeader(key: string, value: string): void {
-        this.headers.append(key, value);
-    }
+    private authorize() {
+        this.headers.delete(this.AUTHORIZATION_HEADER);
+        let session = this.storageService.getSession();
 
-    public setTransformer(transformer: ITransformer) {
-        this.transformer = transformer;
+        if (session) {
+            if (session.token) {
+                this.headers.append(this.AUTHORIZATION_HEADER, session.token);
+            }
+        }
 
         return this;
-    }
-
-    private extractData(res: Response) {
-        return res.json() || { };
     }
 }

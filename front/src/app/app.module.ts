@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { routing } from './app.routing';
 
-import { MaterialModule } from "@angular/material";
+import { MaterialModule } from '@angular/material';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 

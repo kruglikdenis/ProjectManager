@@ -3,6 +3,7 @@ import { MdIconRegistry } from '@angular/material';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
 import { AuthService } from './shared/services/auth.service';
+import { SessionTransformer } from './shared/api/transformers/session.transformer';
 
 import '../style/app.scss';
 
@@ -14,7 +15,8 @@ import '../style/app.scss';
     providers: [
         BaseRestClient,
         StorageService,
-        AuthService
+        AuthService,
+        SessionTransformer
     ]
 })
 export class AppComponent {

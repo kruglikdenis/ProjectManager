@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../../shared/services/storage.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { User } from '../../shared/models/user';
 
@@ -9,7 +8,7 @@ import { User } from '../../shared/models/user';
     styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-    private user:User;
+    private user: User;
 
     constructor(private authService: AuthService) {
 
@@ -17,10 +16,13 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit() {
         this.authService.authorizedEvent
-            .subscribe(user => {this.user = user});
+            .subscribe(user => {
+                this.user = user;
+            });
     }
 
-    authorized(event) {
-        console.log(event);
+
+    logout() {
+        this.authService.logout();
     }
 }

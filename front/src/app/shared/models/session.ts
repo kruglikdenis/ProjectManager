@@ -1,10 +1,11 @@
-export class Session {
-    id: number;
-    email: string;
-    roles: Array<string>;
-    token: string;
+import { User } from './user';
 
-    constructor(token = '') {
+export class Session {
+    token: string;
+    user: User;
+
+    constructor(token = '', user: User) {
         this.token = token;
+        this.user = user;
     }
 }

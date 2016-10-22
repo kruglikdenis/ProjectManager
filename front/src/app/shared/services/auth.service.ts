@@ -13,18 +13,23 @@ export class AuthService {
 
     constructor(
         private restClient: BaseRestClient,
-        private storageService: StorageService
+        private storageService: StorageService,
+        private sessionTransformer: SessionTransformer
     ) {}
 
     login(user: User) {
         return this.restClient
-            .setTransformer(new SessionTransformer())
-            .post(this.SESSIONS_URL, user)
+            .post(this.SESSIONS_URL, user, this.sessionTransformer)
             .then(session => {
                 this.storageService.saveSession(session);
                 this.authorizedEvent.emit({session});
 
                 return session;
             });
+    }
+
+    logout() {
+        return this.restClient.delete(this.SESSIONS_URL)
+            .then(() => this.storageService.deleteSession());
     }
 }

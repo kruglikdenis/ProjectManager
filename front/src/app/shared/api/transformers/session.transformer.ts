@@ -1,13 +1,11 @@
 import { ITransformer } from './interface.transformer.ts';
+import { User } from '../../models/user';
 import { Session } from '../../models/session';
 
 export class SessionTransformer implements ITransformer {
-    transform(data: any): any {
-        let session = new Session(data.token);
-        let user = data.user || {};
-        session.id = user.id;
-        session.email = user.email;
-        session.roles = user.roles || [];
+    transform(data: any): Session {
+        let user = new User(data.user.id, data.user.email);
+        let session = new Session(data.token, user);
 
         return session;
     }

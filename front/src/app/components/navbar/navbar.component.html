@@ -3,6 +3,9 @@
     <a [routerLink]="['']" md-button>Home</a>
   </li>
   <li *ngIf="!user" class="position-right">
-    <a [routerLink]="['login']" md-button>Log In</a>
+    <a [routerLink]="['login']" md-button>Log in</a>
+  </li>
+  <li *ngIf="user" class="position-right">
+    <a md-button (click)="logout()">Log out</a>
   </li>
 </ul>
