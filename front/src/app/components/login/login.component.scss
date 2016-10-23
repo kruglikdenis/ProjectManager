@@ -63,3 +63,44 @@ $gray-color: #FAFAFA;
     color: gray;
   }
 }
+
+.has-error {
+  @keyframes text-error-animation {
+      from {color: $gray-color;}
+      to {color: #f64848;}
+  }
+
+  p {
+      color: #f64848;
+      padding: 0px;
+      margin: 0px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 15px;
+      animation-name: text-error-animation;
+      animation-duration: 2s;
+  }
+}
+
+.md-hint {
+    position: absolute;
+    font-size: 75%;
+    bottom: -0.5em;
+
+    &.md-left {
+        left: 0;
+    }
+
+    [dir='rtl'] & {
+        left: 0;
+        left: auto;
+
+        &.md-right {
+        left: auto;
+        right: 0;
+        }
+    }
+
+    &.has-error {
+      color: red;
+    }
+}

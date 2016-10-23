@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
     user: User;
+    isAccessDenied: boolean;
 
     constructor(
         private authService: AuthService,
@@ -19,9 +20,11 @@ export class LoginComponent {
     }
 
     login() {
+        this.isAccessDenied = false;
+        
         this.authService.login(this.user)
-            .then(session => {
-                this.router.navigate(['/']);
-            });
+            .then(session => this.router.navigate(['/']))
+            .catch(error => this.isAccessDenied = true)
+        ;
     }
 }
