@@ -9,7 +9,13 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { routing } from './app.routing';
 
-import { MaterialModule } from '@angular/material';
+import { MdCoreModule, OVERLAY_PROVIDERS } from '@angular2-material/core';
+import { MdMenuModule } from '@angular2-material/menu';
+import { MdIconModule, MdIconRegistry } from '@angular2-material/icon';
+import { MdCardModule } from '@angular2-material/card';
+import { MdInputModule } from '@angular2-material/input';
+import { MdButtonModule } from '@angular2-material/button';
+import { MdToolbarModule } from '@angular2-material/toolbar';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -19,7 +25,13 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     HttpModule,
     FormsModule,
 
-    MaterialModule,
+    MdMenuModule,
+    MdCoreModule,
+    MdIconModule,
+    MdCardModule,
+    MdInputModule,
+    MdButtonModule,
+    MdToolbarModule,
 
     routing
   ],
@@ -28,6 +40,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     LoginComponent,
     NavbarComponent,
     HomeComponent
+  ],
+  providers: [
+      OVERLAY_PROVIDERS,
+      MdIconRegistry
   ],
   bootstrap: [AppComponent]
 })

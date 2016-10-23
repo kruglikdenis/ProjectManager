@@ -23,7 +23,7 @@ export class BaseRestClient {
         });
     }
 
-    public get(url, transformer: ITransformer) {
+    public get(url, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
             .get(this.baseUrl + url, {headers: this.headers});
@@ -31,7 +31,7 @@ export class BaseRestClient {
         return this.toPromice(observable, transformer);
     }
 
-    public post(url, data, transformer: ITransformer) {
+    public post(url, data, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
             .post(this.baseUrl + url, data, {headers: this.headers});
@@ -39,7 +39,7 @@ export class BaseRestClient {
         return this.toPromice(observable, transformer);
     }
 
-    public delete(url, transformer: ITransformer) {
+    public delete(url, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
             .delete(this.baseUrl + url, {headers: this.headers});

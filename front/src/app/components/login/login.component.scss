@@ -1,4 +1,4 @@
-$tail-color: #004D40;
+$tail-color: #009688;
 $gray-color: #FAFAFA;
 
 .login-container {
@@ -58,26 +58,8 @@ $gray-color: #FAFAFA;
   margin-left: -20px;
 }
 
-
-
 .section {
-  @keyframes color {
-      from {color: gray;}
-      to {color: $tail-color;}
-  }
-
   md-icon {
     color: gray;
   }
-  &:hover {
-    md-icon {
-      color: $tail-color;
-      animation-name: color;
-      animation-duration: 2s;
-    }
-  }
-}
-
-.lock-icon {
-
 }
