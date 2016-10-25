@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\User;
 
+use CoreDomain\DTO\User\SearchDTO;
 use CoreDomain\DTO\User\ProfileDTO;
 use CoreDomain\DTO\User\UserRegisterDTO;
 use CoreDomain\Exception\AccessDeniedException;
@@ -11,6 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
+
+use JMS\Serializer\DeserializationContext;
+use JMS\Serializer\SerializationContext;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -33,6 +39,38 @@ class UserController extends Controller
         }
 
         return $this->get('app.managers.user.user')->register($userDTO);
+    }
+
+    /**
+     * Возвращает список пользователей
+     *
+     * @Rest\Get("/users")
+     * @Rest\View(serializerGroups="api_user_search", statusCode=200)
+     */
+    public function listAction(Request $request)
+    {
+        $searchDTO = $this->get('jms_serializer')->deserialize(
+            json_encode($request->query->all()),
+            SearchDTO::class,
+            'json',
+            DeserializationContext::create()->setGroups(['api_user_search'])
+        );
+
+        $userManager = $this->get('app.managers.user.user');
+
+        $users = $userManager->searchUser($searchDTO);
+
+        $content = $this->get('serializer')->serialize(
+            $users,
+            'json',
+            SerializationContext::create()->setGroups('api_user_get')
+        );
+
+        $response = new Response($content);
+
+        //$response->headers->set('X-total-count', $userManager->searchUserCount($searchDTO));
+
+        return $response;
     }
 
     /**

@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
     selector: 'pm-back',
     templateUrl: './back.component.html'
 })
-export class BackComponent{}
+export class BackComponent {}

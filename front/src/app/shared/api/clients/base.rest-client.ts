@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import {Http, Headers, Response, URLSearchParams} from '@angular/http';
 import { ITransformer } from '../transformers/interface.transformer';
 import { StorageService } from '../../services/storage.service';
 import { Observable } from 'rxjs/Observable';
@@ -23,10 +23,15 @@ export class BaseRestClient {
         });
     }
 
-    public get(url, transformer: ITransformer = null) {
+    public get(url, params: Object, transformer: ITransformer = null) {
+
         let observable = this.authorize()
             .http
-            .get(this.baseUrl + url, {headers: this.headers});
+            .get(this.baseUrl + url, {
+                    headers: this.headers,
+                    search: this.initUrlSearchParams(params)
+                }
+            );
 
         return this.toPromice(observable, transformer);
     }
@@ -81,4 +86,21 @@ export class BaseRestClient {
 
         return this;
     }
+
+    private initUrlSearchParams(resource: Object) {
+        if (resource) {
+            let params: URLSearchParams = new URLSearchParams();
+
+            for (let key in resource) {
+                if (key) {
+                    params.set(key, resource[key]);
+                }
+            }
+
+            return params;
+        }
+
+        return null;
+    }
+
 }

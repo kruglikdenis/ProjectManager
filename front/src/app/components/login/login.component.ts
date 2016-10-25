@@ -21,11 +21,10 @@ export class LoginComponent {
 
     login() {
         this.isAccessDenied = false;
-        
+
         this.authService.login(this.user)
-            .then(session => 
-            {
-                if(session.user.roles == 'ROLE_ADMIN') {
+            .then(session => {
+                if (session.user.roles[0] === 'ROLE_ADMIN') {
                     this.router.navigate(['admin']);
                 } else {
                     this.router.navigate(['/']);

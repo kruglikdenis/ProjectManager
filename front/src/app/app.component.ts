@@ -3,6 +3,7 @@ import { MdIconRegistry } from '@angular2-material/icon';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
 import { AuthService } from './shared/services/auth.service';
+import { UserService } from './shared/services/user.service';
 import { SessionTransformer } from './shared/api/transformers/session.transformer';
 
 import '../style/app.scss';
@@ -16,6 +17,7 @@ import '../style/app.scss';
         BaseRestClient,
         StorageService,
         AuthService,
+        UserService,
         SessionTransformer
     ]
 })

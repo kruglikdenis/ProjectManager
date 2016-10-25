@@ -1,0 +1,12 @@
+CoreDomain\DTO\User\SearchDTO:
+    exclusion_policy: ALL
+    properties:
+        name:
+            type: string
+            groups: [api_user_search]
+        limit:
+            type: string
+            groups: [api_user_search]
+        offset:
+            type: string
+            groups: [api_user_search]

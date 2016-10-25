@@ -2,6 +2,7 @@
 
 namespace AppBundle\Services\Managers\User;
 
+use CoreDomain\DTO\User\SearchDTO;
 use CoreDomain\DTO\User\UserRegisterDTO;
 use CoreDomain\Exception\EntityNotFoundException;
 use CoreDomain\Exception\LogicException;
@@ -66,5 +67,10 @@ class UserManager
     {
         $user->logout();
         $this->userSessionRepository->addAndSave($user->getSession());
+    }
+
+    public function searchUser(SearchDTO  $searchDTO)
+    {
+        return $this->userRepository->search($searchDTO, false);
     }
 }

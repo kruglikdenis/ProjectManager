@@ -47,12 +47,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-      
     AdminComponent,
     AdminUsersComponent,
     AdminProjectsComponent,
     BackComponent
-
   ],
   providers: [
       OVERLAY_PROVIDERS,

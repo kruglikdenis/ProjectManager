@@ -34,13 +34,17 @@ export class AuthService {
             });
     }
 
+    get store() {
+        return this.storageService.getSession();
+    }
+
     isAuthorized() {
-        return (this.storageService.getSession());
+        return this.store;
     }
 
     isAdmin() {
-        if(this.isAuthorized()) {
-            return this.storageService.getSession().user.roles == 'ROLE_ADMIN';
+        if (this.store) {
+            return this.store.user.roles[0] === 'ROLE_ADMIN';
         }
 
         return false;

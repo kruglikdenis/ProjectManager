@@ -1,6 +1,23 @@
 <div class="container">
     <pm-back></pm-back>
     <h1>USERS LIST</h1>
-    <h2>Тут типа табличка юзеров с поиском и редактированием каждого</h2>
+    <table border="1px">
+        <tr>
+            <th>Email</th>
+            <th>Edit</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>
+                {{user.email}}
+            </td>
+            <td>
+                edit
+            </td>
+        </tr>
+    </table>
+
+    <button (click)="_prev()"> Prev </button>
+    <div *ngIf="offset">{{ offset }}</div>
+    <button (click)="_next()"> Next </button>
 </div>
 
