@@ -7,6 +7,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminUsersComponent } from './components/admin/users/users.component';
+import { AdminProjectsComponent } from './components/admin/projects/projects.component';
+
+import { BackComponent } from './components/back/back.component';
+
 import { routing } from './app.routing';
 
 import { MdCoreModule, OVERLAY_PROVIDERS } from '@angular2-material/core';
@@ -39,7 +46,13 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+      
+    AdminComponent,
+    AdminUsersComponent,
+    AdminProjectsComponent,
+    BackComponent
+
   ],
   providers: [
       OVERLAY_PROVIDERS,

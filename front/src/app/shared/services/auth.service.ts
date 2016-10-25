@@ -3,7 +3,7 @@ import { User } from './../models/user';
 import { BaseRestClient } from '../api/clients/base.rest-client';
 import { StorageService } from '../../shared/services/storage.service';
 import { SessionTransformer } from '../api/transformers/session.transformer';
-
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +12,8 @@ export class AuthService {
     constructor(
         private restClient: BaseRestClient,
         private storageService: StorageService,
-        private sessionTransformer: SessionTransformer
+        private sessionTransformer: SessionTransformer,
+        private router: Router
     ) {}
 
     login(user: User) {
@@ -27,12 +28,19 @@ export class AuthService {
 
     logout() {
         return this.restClient.delete(this.SESSIONS_URL)
-            .then(() => this.storageService.deleteSession());
+            .then(() => {
+                this.storageService.deleteSession();
+                this.router.navigate(['/']);
+            });
     }
 
     isAuthorized() {
-        if (this.storageService.getSession()) {
-            return true;
+        return (this.storageService.getSession());
+    }
+
+    isAdmin() {
+        if(this.isAuthorized()) {
+            return this.storageService.getSession().user.roles == 'ROLE_ADMIN';
         }
 
         return false;

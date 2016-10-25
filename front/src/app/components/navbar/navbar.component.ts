@@ -13,6 +13,10 @@ export class NavbarComponent {
         this.authService.logout();
     }
 
+    get isAdmin() {
+        return this.authService.isAdmin();
+    }
+
     get isAuthorized() {
         return this.authService.isAuthorized();
     }

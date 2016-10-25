@@ -12,7 +12,7 @@ export class BaseRestClient {
 
     private baseUrl = API_URL;
     private headers: Headers;
-    private ;
+    // private ;
 
     constructor(
         private http: Http,

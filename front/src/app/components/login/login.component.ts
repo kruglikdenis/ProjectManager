@@ -23,7 +23,14 @@ export class LoginComponent {
         this.isAccessDenied = false;
         
         this.authService.login(this.user)
-            .then(session => this.router.navigate(['/']))
+            .then(session => 
+            {
+                if(session.user.roles == 'ROLE_ADMIN') {
+                    this.router.navigate(['admin']);
+                } else {
+                    this.router.navigate(['/']);
+                }
+            })
             .catch(error => this.isAccessDenied = true)
         ;
     }

@@ -1,5 +1,6 @@
 <md-toolbar color="primary">
     <a [routerLink]="['']" md-button>Home</a>
+    <a [routerLink]="['admin']" md-button *ngIf="isAdmin">Admin</a>
     <span class="fill-remaining-space"></span>
     <a *ngIf="!isAuthorized" [routerLink]="['login']" md-button>Log in</a>
     <button *ngIf="isAuthorized" md-icon-button [md-menu-trigger-for]="menu">
