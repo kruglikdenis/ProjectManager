@@ -13,15 +13,20 @@ export class AdminUsersComponent {
     limit: number;
     offset: number;
     totalUsers: number;
+    searchTitle: string;
 
+    isLoad: boolean;
     search: string;
 
     constructor ( private userService: UserService ) {
         this.userService = userService;
-
+        this.users = [];
         this.limit = 5;
         this.offset = 1;
         this.search = '';
+        this.isLoad = false;
+
+        this.searchTitle = 'Search by name OR email';
 
         this._loadUsers();
     }
@@ -32,9 +37,9 @@ export class AdminUsersComponent {
             .then(users => {
                 console.log(users);
                 this.users = users;
-            })
-            .catch(error => this.isAccessDenied = true)
-        ;
+                this.searchTitle = 'Search by name OR email';
+                this.isLoad = true;
+            });
     }
 
     _prev() {
@@ -45,15 +50,19 @@ export class AdminUsersComponent {
     }
 
     _next() {
-        //TODO: получить totalUsers
+        //TODO: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ totalUsers
         this.offset++;
         this._loadUsers();
     }
 
     searchChange(searchValue) {
+        this.searchTitle = 'Search...';
         this.search = searchValue;
         this._loadUsers();
     }
 
+    isUsers() {
+        return this.users.length !== 0;
+    }
 
 }

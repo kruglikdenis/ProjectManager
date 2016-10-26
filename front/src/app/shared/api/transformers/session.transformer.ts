@@ -1,4 +1,4 @@
-import { ITransformer } from './interface.transformer.ts';
+import { ITransformer } from './interface.transformer';
 import { User } from '../../models/user';
 import { Session } from '../../models/session';
 

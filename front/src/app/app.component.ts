@@ -5,6 +5,7 @@ import { StorageService } from './shared/services/storage.service';
 import { AuthService } from './shared/services/auth.service';
 import { UserService } from './shared/services/user.service';
 import { SessionTransformer } from './shared/api/transformers/session.transformer';
+import { UsersTransformer } from './shared/api/transformers/users.transformer';
 
 import '../style/app.scss';
 
@@ -18,7 +19,8 @@ import '../style/app.scss';
         StorageService,
         AuthService,
         UserService,
-        SessionTransformer
+        SessionTransformer,
+        UsersTransformer
     ]
 })
 export class AppComponent {
