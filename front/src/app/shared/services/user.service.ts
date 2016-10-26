@@ -8,7 +8,7 @@ export class UserService {
 
     constructor(
         private restClient: BaseRestClient,
-        private usersTransformer: UsersTransformer,
+        private usersTransformer: UsersTransformer
     ) {}
 
     getUsers({name = '', limit = 10, offset = 0} = {}) {
