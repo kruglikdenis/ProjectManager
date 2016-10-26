@@ -20,4 +20,8 @@ export class NavbarComponent {
     get isAuthorized() {
         return this.authService.isAuthorized();
     }
+
+    get userFirstName () {
+        return this.authService.firstName;
+    }
 }

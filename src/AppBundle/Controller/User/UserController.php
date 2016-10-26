@@ -45,7 +45,6 @@ class UserController extends Controller
      * Возвращает список пользователей
      *
      * @Rest\Get("/users")
-     * @Rest\View(serializerGroups="api_user_search", statusCode=200)
      */
     public function listAction(Request $request)
     {

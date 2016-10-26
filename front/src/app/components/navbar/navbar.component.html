@@ -3,11 +3,16 @@
     <a [routerLink]="['admin']" md-button *ngIf="isAdmin">Admin</a>
     <span class="fill-remaining-space"></span>
     <a *ngIf="!isAuthorized" [routerLink]="['login']" md-button>Log in</a>
-    <button *ngIf="isAuthorized" md-icon-button [md-menu-trigger-for]="menu">
-       <md-icon>more_vert</md-icon>
-    </button>
+    <div *ngIf="isAuthorized">
+        <span> {{ userFirstName }}</span>
+        <button md-icon-button [md-menu-trigger-for]="menu">
+            <md-icon>more_vert</md-icon>
+        </button>
+    </div>
+
 </md-toolbar>
 
 <md-menu #menu="mdMenu" class="menu-right-position" x-position="before">
     <button md-menu-item (click)="logout()">Log out</button>
 </md-menu>
+

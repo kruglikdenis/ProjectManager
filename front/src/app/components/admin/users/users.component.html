@@ -1,23 +1,30 @@
 <div class="container">
-    <pm-back></pm-back>
-    <h1>USERS LIST</h1>
-    <table border="1px">
-        <tr>
-            <th>Email</th>
-            <th>Edit</th>
-        </tr>
-        <tr *ngFor="let user of users">
-            <td>
-                {{user.email}}
-            </td>
-            <td>
-                edit
-            </td>
-        </tr>
-    </table>
+    <md-toolbar color="accent">
+        <pm-back></pm-back><div class="back-text">Admin / Users</div>
+    </md-toolbar>
+<div class="users">
+    <md-input #inputSearch (keyup)="searchChange(inputSearch.value)" class="input" value="" placeholder="Search by name OR email"></md-input>
+    <md-card *ngFor="let user of users" class="cards">
+        <md-card-title-group class="card-group">
+            <button md-button><md-icon>edit</md-icon></button>
+            <md-card-title>Email: {{ user.email }}
+                <hr>
+                FirstName:
+                <span class="not-found" *ngIf="!user.first_name"><i>unnamed</i></span>
+                {{ user.first_name }}
+            </md-card-title>
+            <md-card-subtitle>ID: {{ user.id }}</md-card-subtitle>
+        </md-card-title-group>
+    </md-card>
+    <div class="pagination">
+        <button  md-button (click)="_prev()"> Prev </button>
+        <div *ngIf="offset">
+            {{ offset }}
+        </div>
+        <button md-button (click)="_next()"> Next </button>
+    </div>
 
-    <button (click)="_prev()"> Prev </button>
-    <div *ngIf="offset">{{ offset }}</div>
-    <button (click)="_next()"> Next </button>
+</div>
+
 </div>
 

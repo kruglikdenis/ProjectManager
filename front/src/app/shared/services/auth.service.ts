@@ -49,4 +49,10 @@ export class AuthService {
 
         return false;
     }
+
+    get firstName () {
+        if (this.store) {
+            return this.store.user.email;
+        }
+    }
 }

@@ -80,6 +80,10 @@ class UserRepository implements UserRepositoryInterface
                     $qb->expr()->lower('u.middleName'),
                     $qb->expr()->lower(':searchStr')
                 ))
+                ->orWhere($qb->expr()->like(
+                    $qb->expr()->lower('u.email'),
+                    $qb->expr()->lower(':searchStr')
+                ))
                 ->setParameter('searchStr', '%' . trim($searchDTO->name) . '%');
         }
 

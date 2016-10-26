@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmmiter } from '@angular/core';
 import { UserService } from '../../../shared/services/user.service';
 
 @Component({
@@ -14,22 +14,23 @@ export class AdminUsersComponent {
     offset: number;
     totalUsers: number;
 
-    filterName: string;
+    search: string;
 
     constructor ( private userService: UserService ) {
         this.userService = userService;
 
-        this.limit = 10;
+        this.limit = 5;
         this.offset = 1;
-        this.name = '';
+        this.search = '';
 
         this._loadUsers();
     }
 
     _loadUsers() {
         this.userService
-            .getUsers({name: this.name, limit: this.limit, offset: ((this.offset - 1) * this.limit)})
+            .getUsers({name: this.search, limit: this.limit, offset: ((this.offset - 1) * this.limit)})
             .then(users => {
+                console.log(users);
                 this.users = users;
             })
             .catch(error => this.isAccessDenied = true)
@@ -46,6 +47,11 @@ export class AdminUsersComponent {
     _next() {
         //TODO: получить totalUsers
         this.offset++;
+        this._loadUsers();
+    }
+
+    searchChange(searchValue) {
+        this.search = searchValue;
         this._loadUsers();
     }
 

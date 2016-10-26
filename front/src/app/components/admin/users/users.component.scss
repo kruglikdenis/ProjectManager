@@ -1,0 +1,31 @@
+.container {
+  margin: 10px;
+  display: block;
+  align-items: center;
+
+  .back-text {
+    margin-left: 10px;
+  }
+  .users {
+    .cards {
+      margin-top: 10px;
+      .card-group {
+        font-size: 16px;
+      }
+    }
+    width: 700px;
+    margin-left: 35%;
+    .pagination {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .input {
+      width: inherit;
+      margin-top: 15px;
+    }
+    .not-found {
+      color: #1b5e20;
+    }
+  }
+}
