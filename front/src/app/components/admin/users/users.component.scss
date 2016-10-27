@@ -3,30 +3,50 @@
   display: block;
   align-items: center;
 
+  md-toolbar {
+    border-radius: 5px;
+  }
   .back-text {
     margin-left: 10px;
   }
+
   .users {
+    width: 350px;
+    margin: 0 auto;
+
     .cards {
-      margin-top: 10px;
-      .card-group {
-        font-size: 8px!important;
+      margin-top: 15px;
+      padding: 10px 15px;
+      border-radius: 10px;
+
+      [md-button]{
+        min-width: 40px;
+        height: 40px;
+        padding: 5px 0;
+        border-radius: 5px;
       }
     }
-    width: 700px;
-    margin-left: 35%;
+
     .pagination {
       margin-top: 10px;
       display: flex;
       justify-content: space-between;
+
+      span {
+        align-self: center;
+      }
+
       button {
         background-color: #83F3BC;
+        border-radius: 10px;
       }
     }
+
     .input {
       width: inherit;
       margin-top: 15px;
     }
+
     .not-found {
       color: #1b5e20;
     }

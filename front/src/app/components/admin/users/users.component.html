@@ -1,3 +1,10 @@
+<style>
+    md-card-title {
+        font-size: 14px;
+        font-weight: 400;
+    }
+</style>
+
 <div class="container">
     <md-toolbar color="accent">
         <pm-back></pm-back><div class="back-text">Admin / Users</div>
@@ -7,7 +14,7 @@
             value="" placeholder="{{ searchTitle }}"></md-input>
 <div *ngIf="isUsers() && isLoad">
     <md-card *ngFor="let user of users" class="cards">
-        <md-card-title-group class="card-group">
+        <md-card-title-group>
             <button md-button><md-icon>edit</md-icon></button>
             <md-card-title>Email: {{ user.email }}
                 <hr>
@@ -20,9 +27,9 @@
     </md-card>
     <div class="pagination">
         <button  md-button (click)="_prev()"> Prev </button>
-        <div *ngIf="offset">
-            {{ offset }}
-        </div>
+        <span *ngIf="offset">
+            {{ offset }} / totalPages
+        </span>
         <button md-button (click)="_next()"> Next </button>
     </div>
 </div>
