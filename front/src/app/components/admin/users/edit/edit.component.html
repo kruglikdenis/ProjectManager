@@ -1,22 +1,24 @@
-<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
-       (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
-    <form #modalForm="ngForm">
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">I'm a modal!</h4>
-        </modal-header>
-        <modal-body>
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" required [(ngModel)]="model.firstName" name="firstName" id="firstName">
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" required [(ngModel)]="model.lastName" name="lastName" id="lastName">
-            </div>
-        </modal-body>
-        <modal-footer>
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel</button>
-            <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="validationModal.close()">Save</button>
-        </modal-footer>
-    </form>
+<button md-button (click)="modal.open()">
+    <md-icon>
+        edit
+    </md-icon>
+</button>
+
+
+<modal #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">Edit user (id:{{ user.id }}) </h4>
+    </modal-header>
+    <modal-body>
+        <div class="list-inline">
+            <md-input placeholder="Email"
+                      [(ngModel)]="user.email" name="email"></md-input>
+            <md-input placeholder="Roles"
+                      [(ngModel)]="user.roles" name="roles"></md-input>
+        </div>
+    </modal-body>
+    <modal-footer>
+        <button md-button="close" (click)="close()"><md-icon>close</md-icon></button>
+        <button md-button="save" (click)="save()"><md-icon>save</md-icon></button>
+    </modal-footer>
 </modal>

@@ -1,0 +1,18 @@
+.ng-valid[required] {
+  border-left: 5px solid #5cb85c; /* green */
+}
+
+.ng-invalid:not(.ng-untouched):not(form) {
+  border-left: 5px solid #d9534f; /* red */
+}
+
+.red-text {
+  color: #d9534f !important; /* red */
+}
+
+[md-button]{
+    min-width: 40px;
+    height: 40px;
+    padding: 5px 0;
+    border-radius: 5px;
+}

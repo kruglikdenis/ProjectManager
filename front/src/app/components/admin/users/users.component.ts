@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { UserService } from '../../../shared/services/user.service';
-import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 
 @Component({
     selector: 'pm-users',
@@ -8,14 +8,6 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
     styleUrls: ['./users.component.scss']
 })
 export class AdminUsersComponent {
-
-    @ViewChild('modal')
-    modal: ModalComponent;
-    animation: boolean = true;
-    keyboard: boolean = true;
-    backdrop: string | boolean = true;
-    css: boolean = false;
-
     users: Array<any>;
 
     limit: number;
@@ -37,22 +29,6 @@ export class AdminUsersComponent {
         this.searchTitle = 'Search by name OR email';
 
         this._loadUsers();
-    }
-
-    open() {
-        this.modal.open();
-    }
-
-    closed() {
-        this.output = '(closed) ' + this.selected;
-    }
-
-    dismissed() {
-        this.output = '(dismissed)';
-    }
-
-    opened() {
-        this.output = '(opened)';
     }
 
     _loadUsers() {
