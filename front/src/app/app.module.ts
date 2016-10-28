@@ -2,6 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,18 +12,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUsersComponent } from './components/admin/users/users.component';
 import { AdminProjectsComponent } from './components/admin/projects/projects.component';
-
 import { BackComponent } from './components/back/back.component';
+import { EditComponent as UserEditComponent } from './components/admin/users/edit/edit.component';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { routing } from './app.routing';
+import { MdIconRegistry } from '@angular/material';
+import { OVERLAY_PROVIDERS } from '@angular/material';
 
-import { MdCoreModule, OVERLAY_PROVIDERS } from '@angular2-material/core';
-import { MdMenuModule } from '@angular2-material/menu';
-import { MdIconModule, MdIconRegistry } from '@angular2-material/icon';
-import { MdCardModule } from '@angular2-material/card';
-import { MdInputModule } from '@angular2-material/input';
-import { MdButtonModule } from '@angular2-material/button';
-import { MdToolbarModule } from '@angular2-material/toolbar';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -31,14 +29,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
+    MaterialModule.forRoot(),
+    Ng2Bs3ModalModule,
 
-    MdMenuModule,
-    MdCoreModule,
-    MdIconModule,
-    MdCardModule,
-    MdInputModule,
-    MdButtonModule,
-    MdToolbarModule,
+    NgbModule.forRoot(),
 
     routing
   ],
@@ -50,13 +44,17 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AdminComponent,
     AdminUsersComponent,
     AdminProjectsComponent,
-    BackComponent
+    BackComponent,
+    UserEditComponent
+
   ],
   providers: [
       OVERLAY_PROVIDERS,
       MdIconRegistry
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [UserEditComponent]
+
 })
 export class AppModule {
   constructor(public appRef: ApplicationRef) {}

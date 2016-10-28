@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdIconRegistry } from '@angular2-material/icon';
+import { MdIconRegistry } from '@angular/material';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
 import { AuthService } from './shared/services/auth.service';

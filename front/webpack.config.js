@@ -170,6 +170,11 @@ module.exports = function makeWebpackConfig() {
         ENV: JSON.stringify(ENV)
       },
       'API_URL': JSON.stringify(apiUrl)
+    }),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
   ];
 

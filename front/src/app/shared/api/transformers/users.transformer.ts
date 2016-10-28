@@ -1,14 +1,13 @@
 import { ITransformer } from './interface.transformer';
 import { User } from '../../models/user';
 
-
 export class UsersTransformer implements ITransformer {
-    transform(data: any) : Array<User> {
+    transform(data: any): Array<User> {
         if (data) {
             let users = Array<User>();
 
-            for(let item of data) {
-                let user = new User(item.id,
+            for (let item of data) {
+                let user = new User (item.id,
                     item.email,
                     item.roles,
                     item.password,

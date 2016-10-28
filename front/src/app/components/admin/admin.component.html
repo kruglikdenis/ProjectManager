@@ -1,10 +1,7 @@
-<pm-back></pm-back>
-<h1>ADMIN PANEL</h1>
-
-    <div class="container">
-
-        <ul>
-            <li><a [routerLink]="['users']">Пользователи</a></li>
-            <li><a [routerLink]="['projects']">Проекты</a></li>
-        </ul>
-    </div>
+<div class="container-admin-toolbar">
+    <pm-back></pm-back>
+    <md-toolbar color="primary">
+        <a [routerLink]="['/admin/users']" md-menu-item>Users</a>
+        <a [routerLink]="['/admin/projects']" md-menu-item>Projects</a>
+    </md-toolbar>
+</div>
