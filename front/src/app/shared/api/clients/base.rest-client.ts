@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response, URLSearchParams} from '@angular/http';
+import { Http, Headers, Response, URLSearchParams } from '@angular/http';
 import { ITransformer } from '../transformers/interface.transformer';
 import { StorageService } from '../../services/storage.service';
 import { Observable } from 'rxjs/Observable';
@@ -7,12 +7,10 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BaseRestClient {
-
     private AUTHORIZATION_HEADER = 'Authorization';
 
     private baseUrl = API_URL;
     private headers: Headers;
-    // private ;
 
     constructor(
         private http: Http,
@@ -24,7 +22,6 @@ export class BaseRestClient {
     }
 
     public get(url, params: Object, transformer: ITransformer = null) {
-
         let observable = this.authorize()
             .http
             .get(this.baseUrl + url, {
@@ -88,19 +85,13 @@ export class BaseRestClient {
     }
 
     private initUrlSearchParams(resource: Object) {
-        if (resource) {
-            let params: URLSearchParams = new URLSearchParams();
+        let params: URLSearchParams = new URLSearchParams();
 
-            for (let key in resource) {
-                if (key) {
-                    params.set(key, resource[key]);
-                }
-            }
-
-            return params;
+        for (let key in resource) {
+            params.set(key, resource[key]);
         }
 
-        return null;
+        return params;
     }
 
 }

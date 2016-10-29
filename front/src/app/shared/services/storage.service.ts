@@ -13,9 +13,7 @@ export class StorageService {
     }
 
     public getSession(): Session {
-        return this.sessionTransformer.transform(
-            this.getItem(this.SESSION_KEY)
-        );
+        return this.getItem(this.SESSION_KEY);
     }
 
     public deleteSession(): void {
@@ -27,11 +25,6 @@ export class StorageService {
     }
 
     public getItem(key: string) {
-        let data = localStorage.getItem(key);
-        if (data) {
-            return JSON.parse(data);
-        }
-
-        return null;
+        return JSON.parse(localStorage.getItem(key));
     }
 }

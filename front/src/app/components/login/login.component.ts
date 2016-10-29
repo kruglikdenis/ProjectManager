@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../../shared/models/user';
+import { AuthUser } from '../../shared/models/auth-user';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,27 +9,21 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    user: User;
+    user: AuthUser;
     isAccessDenied: boolean;
 
     constructor(
         private authService: AuthService,
         private router: Router
     ) {
-        this.user = new User();
+        this.user = new AuthUser();
     }
 
     login() {
         this.isAccessDenied = false;
 
         this.authService.login(this.user)
-            .then(session => {
-                if (session.user.roles[0] === 'ROLE_ADMIN') {
-                    this.router.navigate(['admin']);
-                } else {
-                    this.router.navigate(['/']);
-                }
-            })
+            .then(session => this.router.navigate(['/']))
             .catch(error => this.isAccessDenied = true)
         ;
     }

@@ -1,11 +1,13 @@
-import { User } from './user';
-
 export class Session {
+    userId: number;
     token: string;
-    user: User;
+    email: string;
+    roles: Array<string>
 
-    constructor(token = '', user: User) {
+    constructor(userId = 0, token = '', email = '', roles = []) {
+        this.userId = userId;
         this.token = token;
-        this.user = user;
+        this.email = email;
+        this.roles = roles;
     }
 }

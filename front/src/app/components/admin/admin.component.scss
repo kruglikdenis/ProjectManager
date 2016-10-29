@@ -7,17 +7,4 @@
 .container-admin-toolbar {
   width: 80%;
   margin: 0 auto;
-  border-radius: 5px;
-}
-
-md-toolbar {
-  border-radius: 5px!important;
-}
-
-[md-menu-item] {
-  color: #ffffff;
-  &:hover {
-    background: #188361;
-    border-radius: 5px;
-  }
 }

@@ -49,3 +49,13 @@ input:-webkit-autofill{
     margin-left: 85%;
     margin-top: -40px;
 }
+
+a:hover, a:focus {
+  color: $gray-light-color;
+  text-decoration: none;
+  outline: none;
+}
+
+[md-menu-item] {
+    color: $gray-light-color;
+}

@@ -1,16 +1,16 @@
 <md-card class="login-container">
   <md-card-header>
-      <md-icon class="circle-icon">people</md-icon>
+      <md-icon svgIcon="people-black" class="circle-icon"></md-icon>
       <span>Log in</span>
   </md-card-header>
   <form [ngClass]="(isAccessDenied) ? 'has-error' : ''">
     <div class='section'>
-      <md-icon>account_box</md-icon>
+      <md-icon svgIcon="core:account-box"></md-icon>
       <md-input placeholder="Email"
         [(ngModel)]="user.email" name="email"></md-input>
     </div>
     <div class='section' flex-xs="100" flex="50">
-      <md-icon class='lock-icon'>lock_outline</md-icon>
+      <md-icon svgIcon="lock-outline" class='lock-icon'></md-icon>
       <md-input placeholder="Password" type="password"
         [(ngModel)]='user.password' name="password">
       </md-input>

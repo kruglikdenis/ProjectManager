@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './../models/user';
+import { AuthUser } from './../models/auth-user';
 import { BaseRestClient } from '../api/clients/base.rest-client';
 import { StorageService } from '../../shared/services/storage.service';
 import { SessionTransformer } from '../api/transformers/session.transformer';
@@ -16,7 +16,7 @@ export class AuthService {
         private router: Router
     ) {}
 
-    login(user: User) {
+    login(user: AuthUser) {
         return this.restClient
             .post(this.SESSIONS_URL, user, this.sessionTransformer)
             .then(session => {
@@ -34,25 +34,24 @@ export class AuthService {
             });
     }
 
-    get store() {
-        return this.storageService.getSession();
-    }
-
     isAuthorized() {
-        return this.store;
-    }
-
-    isAdmin() {
-        if (this.store) {
-            return this.store.user.roles[0] === 'ROLE_ADMIN';
+        if (this.getSession()) {
+            return true;
         }
 
         return false;
     }
 
-    get firstName () {
-        if (this.store) {
-            return this.store.user.email;
+    isAdmin() {
+        let session = this.getSession();
+        if (session) {
+            return (session.roles.indexOf('ROLE_ADMIN') >= 0);
         }
+
+        return false;
+    }
+
+    getSession() {
+        return this.storageService.getSession();
     }
 }

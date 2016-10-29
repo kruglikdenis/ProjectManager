@@ -3,21 +3,16 @@
   display: block;
   align-items: center;
 
-  md-toolbar {
-    border-radius: 5px;
-  }
   .back-text {
     margin-left: 10px;
   }
 
   .users {
-    width: 500px;
+    width: 70%;
     margin: 0 auto;
 
     .cards {
       margin-top: 15px;
-      padding: 10px 15px;
-      border-radius: 10px;
 
       .margin-left {
         margin-left: 10px;
@@ -40,12 +35,11 @@
 
       button {
         background-color: #83F3BC;
-        border-radius: 10px;
       }
     }
 
     .input {
-      width: inherit;
+      width: 100%;
       margin-top: 15px;
     }
 
@@ -54,5 +48,3 @@
     }
   }
 }
-
-

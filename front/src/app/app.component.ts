@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MdIconRegistry } from '@angular/material';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
@@ -14,6 +14,7 @@ import '../style/app.scss';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     viewProviders: [MdIconRegistry],
+    encapsulation: ViewEncapsulation.None,
     providers: [
         BaseRestClient,
         StorageService,
@@ -26,8 +27,11 @@ import '../style/app.scss';
 export class AppComponent {
     constructor (mdIconRegistry: MdIconRegistry) {
         mdIconRegistry
-            .addSvgIcon('thumb-up', './../assets/icons/thumbup-icon.svg')
-            .addSvgIconSetInNamespace('core', './../assets/icons/core-icon-set.svg')
+            .addSvgIcon('thumb-up', 'icons/thumbup-icon.svg')
+            .addSvgIconSetInNamespace('core', 'icons/core-icon-set.svg')
+            .addSvgIcon('people-black', 'icons/people-black-icon.svg')
+            .addSvgIcon('lock-outline', 'icons/lock-outline-icon.svg')
+            .addSvgIcon('more-vert', 'icons/more-vert-icon.svg')
             .registerFontClassAlias('fontawesome', 'fa');
     }
 }

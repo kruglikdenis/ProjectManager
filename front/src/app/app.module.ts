@@ -20,8 +20,6 @@ import { routing } from './app.routing';
 import { MdIconRegistry } from '@angular/material';
 import { OVERLAY_PROVIDERS } from '@angular/material';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
@@ -31,8 +29,6 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     FormsModule,
     MaterialModule.forRoot(),
     Ng2Bs3ModalModule,
-
-    NgbModule.forRoot(),
 
     routing
   ],
