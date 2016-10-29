@@ -18,54 +18,12 @@ class UserRepository implements UserRepositoryInterface
         $this->em = $em;
     }
 
-    public function findOneByEmail($email)
-    {
-        return $this->em->createQueryBuilder()
-            ->select('u')
-            ->from(User::class, 'u')
-            ->where('u.email = :email')
-            ->setParameter('email', $email)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
-    public function findOneById($id)
-    {
-        $result = $this->em->createQueryBuilder()
-            ->select('u')
-            ->from(User::class, 'u')
-            ->where('u.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getOneOrNullResult();
-
-        return $result;
-    }
-
-    public function findOneByToken($token, $expirePeriod = 'P7D')
-    {
-        $validCreatedAt = new \DateTime();
-        $validCreatedAt->sub(new \DateInterval($expirePeriod));
-
-        return $this->em->createQueryBuilder()
-            ->select('u')
-            ->from(User::class, 'u')
-            ->innerJoin('u.sessions', 's')
-            ->where('s.token = :token')
-            ->andWhere('s.createdAt > :date')
-            ->setParameter('token', $token)
-            ->setParameter('date', $validCreatedAt)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
     public function search(SearchDTO $searchDTO, $onlyCount = false)
     {
         $qb = $this->em->createQueryBuilder();
         $qb->select('u')
             ->from(User::class, 'u');
 
-        // фильтруем по ФИО
         if ($searchDTO->name) {
             $qb
                 ->orWhere($qb->expr()->like(
@@ -107,6 +65,46 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
+    public function findOneByEmail($email)
+    {
+        return $this->em->createQueryBuilder()
+            ->select('u')
+            ->from(User::class, 'u')
+            ->where('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findOneById($id)
+    {
+        $result = $this->em->createQueryBuilder()
+            ->select('u')
+            ->from(User::class, 'u')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $result;
+    }
+
+    public function findOneByToken($token, $expirePeriod = 'P7D')
+    {
+        $validCreatedAt = new \DateTime();
+        $validCreatedAt->sub(new \DateInterval($expirePeriod));
+
+        return $this->em->createQueryBuilder()
+            ->select('u')
+            ->from(User::class, 'u')
+            ->innerJoin('u.sessions', 's')
+            ->where('s.token = :token')
+            ->andWhere('s.createdAt > :date')
+            ->setParameter('token', $token)
+            ->setParameter('date', $validCreatedAt)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     public function add(User $user)
     {

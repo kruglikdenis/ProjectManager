@@ -69,8 +69,8 @@ class UserManager
         $this->userSessionRepository->addAndSave($user->getSession());
     }
 
-    public function searchUser(SearchDTO  $searchDTO)
+    public function searchUser(SearchDTO $searchDTO, $isOnlyCount = false)
     {
-        return $this->userRepository->search($searchDTO, false);
+        return $this->userRepository->search($searchDTO, $isOnlyCount);
     }
 }

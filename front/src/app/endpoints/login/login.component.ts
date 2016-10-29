@@ -23,7 +23,7 @@ export class LoginComponent {
         this.isAccessDenied = false;
 
         this.authService.login(this.user)
-            .then(session => this.router.navigate(['/']))
+            .then(() => this.router.navigate(['/']))
             .catch(error => this.isAccessDenied = true)
         ;
     }

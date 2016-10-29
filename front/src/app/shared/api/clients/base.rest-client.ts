@@ -55,7 +55,12 @@ export class BaseRestClient {
             .then(this.extractData);
 
         if (transformer) {
-            promice = promice.then(transformer.transform);
+            promice = promice.then(resource => {
+                return {
+                    headers: resource.headers || {},
+                    data: transformer.transform(resource.data)
+                };
+            });
         }
 
         return promice;
@@ -64,7 +69,10 @@ export class BaseRestClient {
     private extractData(responce: Response) {
         if (responce.status >= 200 && responce.status < 300) {
             if (responce.status !== 204) {
-                return responce.json();
+                return {
+                    data: responce.json(),
+                    headers: responce.headers
+                }
             }
         }
 

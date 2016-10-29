@@ -42,11 +42,9 @@ class UserController extends Controller
     }
 
     /**
-     * Возвращает список пользователей
-     *
      * @Rest\Get("/users")
      */
-    public function listAction(Request $request)
+    public function searchAction(Request $request)
     {
         $searchDTO = $this->get('jms_serializer')->deserialize(
             json_encode($request->query->all()),
@@ -66,8 +64,7 @@ class UserController extends Controller
         );
 
         $response = new Response($content);
-
-        //$response->headers->set('X-total-count', $userManager->searchUserCount($searchDTO));
+        $response->headers->set('X-Total-Count', $userManager->searchUser($searchDTO, true));
 
         return $response;
     }

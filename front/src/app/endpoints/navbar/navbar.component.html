@@ -1,3 +1,4 @@
+
 <md-toolbar color="primary">
     <a [routerLink]="['']" md-menu-item>Home</a>
     <a *ngIf="isAdmin" [routerLink]="['admin']" md-menu-item>Admin</a>
@@ -12,6 +13,6 @@
 
 </md-toolbar>
 
-<md-menu #menu="mdMenu" class="menu-right-position" x-position="before">
+<md-menu x-position="before" #menu="mdMenu">
     <button md-menu-item (click)="logout()">Log out</button>
 </md-menu>

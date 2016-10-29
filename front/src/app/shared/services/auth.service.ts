@@ -20,9 +20,9 @@ export class AuthService {
         return this.restClient
             .post(this.SESSIONS_URL, user, this.sessionTransformer)
             .then(session => {
-                this.storageService.saveSession(session);
+                this.storageService.saveSession(session.data);
 
-                return session;
+                return session.data;
             });
     }
 

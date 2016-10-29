@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/services/user.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserService } from '../../../shared/services/user.service';
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss']
 })
-export class AdminUsersComponent {
+export class AdminUsersComponent implements OnInit {
     users: Array<any>;
 
     limit: number;
@@ -17,13 +17,14 @@ export class AdminUsersComponent {
     isLoading: boolean;
 
     constructor (private userService: UserService) {
-        this.userService = userService;
         this.users = [];
         this.limit = 5;
         this.page = 1;
         this.search = '';
         this.isLoading = false;
+    }
 
+    ngOnInit() {
         this.loadUsers();
     }
 
@@ -32,8 +33,8 @@ export class AdminUsersComponent {
 
         this.isLoading = true;
         this.userService.search(this.search, this.limit, offset)
-            .then(users => {
-                this.users = users;
+            .then(({ data, headers }) => {
+                this.users = data;
                 this.isLoading = false;
             })
         ;
