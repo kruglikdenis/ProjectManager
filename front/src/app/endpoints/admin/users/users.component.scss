@@ -11,33 +11,6 @@
     width: 70%;
     margin: 0 auto;
 
-    .cards {
-      margin-top: 15px;
-
-      .margin-left {
-        margin-left: 10px;
-      }
-
-      md-card-title {
-        font-size: 16px!important;
-        font-weight: 400!important;
-      }
-    }
-
-    .pagination {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-
-      span {
-        align-self: center;
-      }
-
-      button {
-        background-color: #83F3BC;
-      }
-    }
-
     .not-found {
       color: #1b5e20;
     }

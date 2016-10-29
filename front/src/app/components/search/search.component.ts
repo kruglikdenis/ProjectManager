@@ -7,9 +7,9 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class SearchComponent {
     @Input() isLoading: boolean;
-    @Output() search = new EventEmitter();
+    @Output() onChangeSearch = new EventEmitter();
 
     onKeyUp(value) {
-        this.search.emit(value);
+        this.onChangeSearch.emit(value);
     }
 }

@@ -1,0 +1,13 @@
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    align-self: center;
+  }
+
+  button {
+    background-color: #83F3BC;
+  }
+}

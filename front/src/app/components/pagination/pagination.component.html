@@ -1,0 +1,7 @@
+<div class="pagination">
+    <button  md-button (click)="prev()"> Prev </button>
+    <span *ngIf="page">
+        {{ page }} / totalPages
+    </span>
+    <button md-button (click)="next()"> Next </button>
+</div>

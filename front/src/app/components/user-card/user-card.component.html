@@ -1,0 +1,19 @@
+<md-card class="card">
+    <md-card-title-group>
+        <md-card-title>
+            <div class="list-inline margin-left">
+                <div>
+                    Email: {{ user.email }}
+                </div>
+                <div>
+                    FirstName:
+                    <span class="not-found" *ngIf="!user.firstName"><i>unnamed</i></span>
+                    {{ user.firstName }}
+                </div>
+            </div>
+        </md-card-title>
+        <md-card-subtitle class="margin-left">
+            ID: {{ user.id }}
+        </md-card-subtitle>
+    </md-card-title-group>
+</md-card>

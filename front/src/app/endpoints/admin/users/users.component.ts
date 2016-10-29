@@ -10,52 +10,48 @@ export class AdminUsersComponent {
     users: Array<any>;
 
     limit: number;
-    offset: number;
+    search: string;
+    page: number;
     totalUsers: number;
 
     isLoading: boolean;
-    search: string;
 
     constructor (private userService: UserService) {
         this.userService = userService;
         this.users = [];
         this.limit = 5;
-        this.offset = 1;
+        this.page = 1;
         this.search = '';
         this.isLoading = false;
 
-        this._loadUsers();
+        this.loadUsers();
     }
 
-    _loadUsers() {
+    loadUsers() {
+        let offset = (this.page - 1) * this.limit;
+
         this.isLoading = true;
-        this.userService
-            .getUsers({name: this.search, limit: this.limit, offset: ((this.offset - 1) * this.limit)})
+        this.userService.search(this.search, this.limit, offset)
             .then(users => {
                 this.users = users;
                 this.isLoading = false;
-            });
+            })
+        ;
     }
 
-    _prev() {
-        if (this.offset >= 2) {
-            this.offset--;
-            this._loadUsers();
-        }
+    setPage(page) {
+        this.page = page;
+
+        this.loadUsers();
     }
 
-    _next() {
-        this.offset++;
-        this._loadUsers();
-    }
+    setSearch(search) {
+        this.search = search;
 
-    searchChange(searchValue) {
-        this.search = searchValue;
-        this._loadUsers();
+        this.loadUsers();
     }
 
     isUsers() {
         return this.users.length !== 0;
     }
-
 }

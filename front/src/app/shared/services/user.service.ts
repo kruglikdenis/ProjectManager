@@ -11,12 +11,10 @@ export class UserService {
         private usersTransformer: UsersTransformer
     ) {}
 
-    getUsers({name = '', limit = 10, offset = 0} = {}) {
+    search(name = '', limit = 10, offset = 0) {
+        let params = { name, limit, offset };
+        
         return this.restClient
-            .get(this.USERS_URL, {name, limit, offset}, this.usersTransformer)
-            .then(users => {
-                console.log(users);
-                return users;
-            });
+            .get(this.USERS_URL, params, this.usersTransformer);
     }
 }

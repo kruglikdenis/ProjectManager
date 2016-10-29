@@ -1,34 +1,10 @@
 <div class="container-users">
     <div class="users">
-        <pm-search (search)="searchChange($event)" [isLoading]="isLoading"></pm-search>
+        <pm-search (onChangeSearch)="setSearch($event)" [isLoading]="isLoading">
+        </pm-search>
         <div *ngIf="isUsers() && !isLoading">
-            <md-card *ngFor="let user of users" class="cards">
-                <md-card-title-group>
-                    <md-card-title>
-                        <div class="list-inline margin-left">
-                            <div>
-                                Email: {{ user.email }}
-                            </div>
-                            <div>
-                                FirstName:
-                                <span class="not-found" *ngIf="!user.firstName"><i>unnamed</i></span>
-                                {{ user.firstName }}
-                            </div>
-                        </div>
-                    </md-card-title>
-                    <pm-user-edit [user]="user"></pm-user-edit>
-                    <md-card-subtitle class="margin-left">
-                        ID: {{ user.id }}
-                    </md-card-subtitle>
-                </md-card-title-group>
-            </md-card>
-            <div class="pagination">
-                <button  md-button (click)="_prev()"> Prev </button>
-                <span *ngIf="offset">
-                    {{ offset }} / totalPages
-                </span>
-                <button md-button (click)="_next()"> Next </button>
-            </div>
+            <pm-user-card *ngFor="let user of users" [user]="user"></pm-user-card>
+            <pm-pagination (onChangePage)="setPage($event)"></pm-pagination>
         </div>
         <div *ngIf="!isUsers() && !isLoading">
             <span class="">Sorry users not found</span>

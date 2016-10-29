@@ -9,6 +9,8 @@ import { HomeComponent } from './endpoints/home/home.component';
 import { LoginComponent } from './endpoints/login/login.component';
 import { NavbarComponent } from './endpoints/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 import { AdminComponent } from './endpoints/admin/admin.component';
 import { AdminUsersComponent } from './endpoints/admin/users/users.component';
@@ -43,7 +45,9 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AdminProjectsComponent,
     BackComponent,
     UserEditComponent,
-    SearchComponent
+    SearchComponent,
+    UserCardComponent,
+    PaginationComponent
   ],
   providers: [
       OVERLAY_PROVIDERS,
