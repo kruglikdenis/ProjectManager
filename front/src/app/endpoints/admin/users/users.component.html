@@ -1,8 +1,7 @@
 <div class="container-users">
     <div class="users">
-        <md-input #inputSearch (keyup)="searchChange(inputSearch.value)" class="input"
-            value="" placeholder="{{ searchTitle }}"></md-input>
-        <div *ngIf="isUsers() && isLoad">
+        <pm-search (search)="searchChange($event)" [isLoading]="isLoading"></pm-search>
+        <div *ngIf="isUsers() && !isLoading">
             <md-card *ngFor="let user of users" class="cards">
                 <md-card-title-group>
                     <md-card-title>
@@ -31,7 +30,7 @@
                 <button md-button (click)="_next()"> Next </button>
             </div>
         </div>
-        <div *ngIf="!isUsers() && isLoad">
+        <div *ngIf="!isUsers() && !isLoading">
             <span class="">Sorry users not found</span>
         </div>
     </div>

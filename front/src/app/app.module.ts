@@ -5,15 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './endpoints/home/home.component';
+import { LoginComponent } from './endpoints/login/login.component';
+import { NavbarComponent } from './endpoints/navbar/navbar.component';
+import { SearchComponent } from './components/search/search.component';
 
-import { AdminComponent } from './components/admin/admin.component';
-import { AdminUsersComponent } from './components/admin/users/users.component';
-import { AdminProjectsComponent } from './components/admin/projects/projects.component';
+import { AdminComponent } from './endpoints/admin/admin.component';
+import { AdminUsersComponent } from './endpoints/admin/users/users.component';
+import { AdminProjectsComponent } from './endpoints/admin/projects/projects.component';
 import { BackComponent } from './components/back/back.component';
-import { EditComponent as UserEditComponent } from './components/admin/users/edit/edit.component';
+import { EditComponent as UserEditComponent } from './endpoints/admin/users/edit/edit.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { routing } from './app.routing';
@@ -41,15 +42,15 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AdminUsersComponent,
     AdminProjectsComponent,
     BackComponent,
-    UserEditComponent
-
+    UserEditComponent,
+    SearchComponent
   ],
   providers: [
       OVERLAY_PROVIDERS,
       MdIconRegistry
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UserEditComponent]
+  entryendpoints: [UserEditComponent]
 
 })
 export class AppModule {

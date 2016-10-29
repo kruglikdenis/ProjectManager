@@ -1,0 +1,8 @@
+<md-input #input
+    (keyup)="onKeyUp(input.value)"
+    class="input"
+    value="" [placeholder]="isLoading ? 'Searching...' : 'Search by email'">
+    <span *ngIf="isLoading" md-suffix class='position-right'>
+        <md-spinner></md-spinner>
+    </span>
+</md-input>
