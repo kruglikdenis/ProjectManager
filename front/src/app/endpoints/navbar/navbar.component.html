@@ -1,13 +1,17 @@
 
 <md-toolbar color="primary">
-    <a [routerLink]="['']" md-menu-item>Home</a>
-    <a *ngIf="isAdmin" [routerLink]="['admin']" md-menu-item>Admin</a>
+    <a [routerLink]="['']" md-menu-item>
+      <md-icon svgIcon='home-icon'></md-icon>
+    </a>
     <span class="fill-remaining-space"></span>
+    <a *ngIf="isAdmin" [routerLink]="['admin']" md-menu-item>
+      <md-icon svgIcon="people-black"></md-icon>
+    </a>
     <a *ngIf="!isAuthorized" [routerLink]="['login']" md-menu-item>Log in</a>
     <div *ngIf="isAuthorized">
         <span> {{ userFirstName }}</span>
         <button md-icon-button [md-menu-trigger-for]="menu">
-            <md-icon svgIcon="more-vert"></md-icon>
+            <md-icon class='c-icon' svgIcon="more-vert"></md-icon>
         </button>
     </div>
 

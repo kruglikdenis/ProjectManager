@@ -32,6 +32,6 @@ export class AppComponent {
             .addSvgIcon('people-black', 'icons/people-black-icon.svg')
             .addSvgIcon('lock-outline', 'icons/lock-outline-icon.svg')
             .addSvgIcon('more-vert', 'icons/more-vert-icon.svg')
-            .registerFontClassAlias('fontawesome', 'fa');
+            .addSvgIcon('home-icon', 'icons/home-icon.svg')
     }
 }

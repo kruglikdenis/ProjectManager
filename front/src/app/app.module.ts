@@ -15,7 +15,6 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { AdminComponent } from './endpoints/admin/admin.component';
 import { AdminUsersComponent } from './endpoints/admin/users/users.component';
 import { AdminProjectsComponent } from './endpoints/admin/projects/projects.component';
-import { BackComponent } from './components/back/back.component';
 import { EditComponent as UserEditComponent } from './endpoints/admin/users/edit/edit.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
@@ -43,7 +42,6 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AdminComponent,
     AdminUsersComponent,
     AdminProjectsComponent,
-    BackComponent,
     UserEditComponent,
     SearchComponent,
     UserCardComponent,

@@ -1,4 +1,4 @@
-$tail-color: #009688;
+$tail-color: #00695c;
 $gray-color: #FAFAFA;
 
 .login-container {
@@ -39,12 +39,8 @@ $gray-color: #FAFAFA;
   color: gray;
 }
 
-.md-checkbox-inner-container {
-  color: $tail-color;
-}
-
-.lock-icon {
-  fill: gray;
+.c-icon {
+  fill: $tail-color;
 }
 
 .circle-icon {
@@ -54,13 +50,13 @@ $gray-color: #FAFAFA;
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
-  color: #fff;
   line-height: 40px;
   text-align: center;
   background: $tail-color;
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
   margin-right: 10px;
   margin-left: -20px;
+  fill: $gray-color;
 }
 
 .has-error {

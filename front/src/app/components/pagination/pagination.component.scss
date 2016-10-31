@@ -1,3 +1,5 @@
+$tail-color: #00695c;
+
 .pagination {
   margin-top: 10px;
   display: flex;
@@ -8,6 +10,7 @@
   }
 
   button {
-    background-color: #83F3BC;
+    background-color: $tail-color;
+    
   }
 }
