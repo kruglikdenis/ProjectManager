@@ -1,0 +1,38 @@
+CoreDomain\Model\Project\Project:
+    type: entity
+    table: projects
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            column: title
+            type: string
+            nullable: false
+        description:
+            column: description
+            type: string
+            nullable: false
+        code:
+            column: code
+            type: string
+            nullable: false
+        createdAt:
+            column: created_at
+            type: integer
+            unique: false
+        updatedAt:
+            column: updated_at
+            type: integer
+            nullable: true
+        deletedAt:
+            column: deleted_at
+            type: integer
+            nullable: true
+        isDeleted:
+            column: is_deleted
+            type: boolean
+            nullable: true
+            options:
+                default: false
