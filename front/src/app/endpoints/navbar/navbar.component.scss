@@ -1,18 +1,18 @@
-.fill-remaining-space {
-  flex: 1 1 auto;
+.brand {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 100%;
+    background-color: #004d40;
 }
 
-button {
-  color: black;
+.nav-link {
+    padding-top: .800rem;
 }
 
-.c-icon {
-  fill: white;
+.float-right {
+    float: right;
 }
 
-[md-menu-item] {
-  &:hover, &:focus {
-    transition: all 0.1s ease-in-out 0.1s;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-  }
+.container {
+    margin-right: 0px;
 }
