@@ -111,7 +111,7 @@ module.exports = function makeWebpackConfig() {
       // copy those assets to output
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file?name=fonts/[name].[hash].[ext]?'
+        loader: 'file?name=[name].[ext]'
       },
 
       // Support for *.json files.
@@ -174,7 +174,9 @@ module.exports = function makeWebpackConfig() {
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
-      jquery: 'jquery'
+      jquery: 'jquery',
+      'window.Tether': 'tether',
+      'Waves': 'node-waves'
     })
   ];
 
