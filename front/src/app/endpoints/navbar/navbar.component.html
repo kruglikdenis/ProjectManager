@@ -13,7 +13,7 @@
           </ul>
           <ul class="nav navbar-nav float-right">
               <li *ngIf="!isAuthorized" class="nav-item">
-                  <a class="nav-link"  [routerLink]="['login']">
+                  <a class="nav-link" (click)="openLoginModal()">
                       Log in
                   </a>
               </li>

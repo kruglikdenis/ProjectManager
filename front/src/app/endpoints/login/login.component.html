@@ -1,24 +1,45 @@
-<md-card class="login-container">
-  <md-card-header>
-      <md-icon svgIcon="people-black" class="circle-icon"></md-icon>
-      <span>Log in</span>
-  </md-card-header>
-  <form [ngClass]="(isAccessDenied) ? 'has-error' : ''">
-    <div class='section'>
-      <md-input placeholder="Email" [(ngModel)]="user.email" name="email">
-        <span md-prefix>
-            <md-icon class='c-icon' svgIcon="core:account-box"></md-icon>
-        </span>
-      </md-input>
+<div class="modal fade modal-ext" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3><i class="material-icons">people</i> Login</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="md-form">
+                    <i class="material-icons prefix">email</i>
+                    <input [(ngModel)]="user.email"
+                        id="email"
+                        type="text"
+                        class="form-control"
+                    >
+                    <label for="email">Your email</label>
+                </div>
+
+                <div class="md-form">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input type="password"
+                        [(ngModel)]='user.password'
+                        id="password"
+                        class="form-control"
+                    >
+                    <label for="password">Your password</label>
+                </div>
+                <p *ngIf="isAccessDenied" class="text-xs-center has-error">
+                    Invalid email or password!
+                </p>
+                <div class="text-xs-center">
+                    <button class="btn btn-default tail-color btn-lg" (click)="login()">Login</button>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-    <div class='section' flex-xs="100" flex="50">
-      <md-input placeholder="Password" type="password"[(ngModel)]='user.password' name="password">
-        <span md-prefix>
-            <md-icon svgIcon="lock-outline" class='c-icon'></md-icon>
-        </span>
-      </md-input>
-    </div>
-    <p *ngIf="isAccessDenied">Invalid email or password</p>
-    <button md-raised-button class="md-raised md-primary" (click)="login()">Log in</button>
-  </form>
-</md-card>
+</div>

@@ -17,6 +17,7 @@ CoreDomain\Model\Project\Project:
         code:
             column: code
             type: string
+            unique: true
             nullable: false
         createdAt:
             column: created_at

@@ -1,5 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { MdIconRegistry } from '@angular/material';
+import { Component } from '@angular/core';
 import { BaseRestClient } from './shared/api/clients/base.rest-client';
 import { StorageService } from './shared/services/storage.service';
 import { AuthService } from './shared/services/auth.service';
@@ -13,8 +12,6 @@ import '../style/app.scss';
     selector: 'pm-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    viewProviders: [MdIconRegistry],
-    encapsulation: ViewEncapsulation.None,
     providers: [
         BaseRestClient,
         StorageService,
@@ -25,13 +22,17 @@ import '../style/app.scss';
     ]
 })
 export class AppComponent {
-    constructor (mdIconRegistry: MdIconRegistry) {
-        mdIconRegistry
-            .addSvgIcon('thumb-up', 'icons/thumbup-icon.svg')
-            .addSvgIconSetInNamespace('core', 'icons/core-icon-set.svg')
-            .addSvgIcon('people-black', 'icons/people-black-icon.svg')
-            .addSvgIcon('lock-outline', 'icons/lock-outline-icon.svg')
-            .addSvgIcon('more-vert', 'icons/more-vert-icon.svg')
-            .addSvgIcon('home-icon', 'icons/home-icon.svg')
+    isOpenLoginModal: boolean;
+
+    constructor (private authService: AuthService) {
+        this.isOpenLoginModal = false;
+    }
+
+    openLoginModal() {
+        this.isOpenLoginModal = true;
+    }
+
+    get isAuthorized() {
+        return this.authService.isAuthorized();
     }
 }

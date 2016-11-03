@@ -4,7 +4,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'pm-login',
+    selector: 'pm-login-modal',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
@@ -23,7 +23,7 @@ export class LoginComponent {
         this.isAccessDenied = false;
 
         this.authService.login(this.user)
-            .then(() => this.router.navigate(['/']))
+            .then(() => $('#loginModal').modal('hide'))
             .catch(error => this.isAccessDenied = true)
         ;
     }

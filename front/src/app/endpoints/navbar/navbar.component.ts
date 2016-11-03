@@ -9,6 +9,10 @@ import { AuthService } from '../../shared/services/auth.service';
 export class NavbarComponent {
     constructor(private authService: AuthService) {}
 
+    openLoginModal() {
+        $('#loginModal').modal('show');
+    }
+
     logout() {
         this.authService.logout();
     }

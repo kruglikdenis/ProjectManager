@@ -1,102 +1,46 @@
 $tail-color: #00695c;
-$gray-color: #FAFAFA;
+$tail-dark-color: #004d40;
+$red-color: #CC0000;
 
-.login-container {
-  width: 40%;
-  margin: 100px auto;
-  padding: 40px 60px 60px 60px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  background-color: $gray-color;
-  md-input {
-    width: 90%;
-    margin-bottom: 10px;
-    input {
-      background-color: black;
+.md-form .prefix.active {
+    color: $tail-color;
+}
+
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=search-md]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+textarea.md-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid $tail-color;
+    box-shadow: 0 1px 0 0 $tail-color;
+
+    +label{
+        color: $tail-color;
     }
-  }
-  button {
-    margin: 20px auto 0px;
-  }
-  md-card-header {
-    span {
-      margin-top: 10px;
-    }
-  }
-}
-.login-container:hover {
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
-
-.pm-checkbox {
-  color: gray;
-}
-.pm-checkbox:hover {
-  color: $tail-color;
-}
-
-.pm-checkbox-label {
-  margin-left: 10px;
-  color: gray;
-}
-
-.c-icon {
-  fill: $tail-color;
-}
-
-.circle-icon {
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  border-radius: 50px;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  line-height: 40px;
-  text-align: center;
-  background: $tail-color;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-  margin-right: 10px;
-  margin-left: -20px;
-  fill: $gray-color;
 }
 
 .has-error {
-  @keyframes text-error-animation {
-      from {color: $gray-color;}
-      to {color: #f64848;}
-  }
+    @keyframes text-error-animation {
+        from {color: white;}
+        to {color: $red-color;}
+    }
 
-  p {
-      color: #f64848;
-      padding: 0px;
-      margin: 0px;
-      font-family: Roboto, "Helvetica Neue", sans-serif;
-      font-size: 15px;
-      animation-name: text-error-animation;
-      animation-duration: 2s;
-      margin-left: 8px
-  }
+    color: $red-color;
+    animation-name: text-error-animation;
+    animation-duration: 2s;
 }
 
-.md-hint {
-    position: absolute;
-    font-size: 75%;
-    bottom: -0.5em;
+.tail-color {
+    background-color: $tail-color!important;
 
-    &.md-left {
-        left: 0;
-    }
-
-    [dir='rtl'] & {
-        left: 0;
-        left: auto;
-
-        &.md-right {
-        left: auto;
-        right: 0;
-        }
-    }
-
-    &.has-error {
-      color: red;
+    &:hover {
+        background-color: $tail-dark-color!important;
     }
 }
