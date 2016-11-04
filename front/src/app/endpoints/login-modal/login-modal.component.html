@@ -1,44 +1,44 @@
 <!-- <div class="modal fade modal-ext" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content"> -->
-        <pm-modal [identifier]="id">
+<pm-modal [identifier]="id">
 
-            <pm-modal-header>
-                <h3><i class="material-icons">people</i> Login</h3>
-            </pm-modal-header>
+        <pm-modal-header>
+            <h3><i class="material-icons">people</i> Login</h3>
+        </pm-modal-header>
 
-            <pm-modal-body>
-                <div class="md-form">
-                    <i class="material-icons prefix">email</i>
-                    <input [(ngModel)]="user.email"
-                        id="email"
-                        type="text"
-                        class="form-control"
-                    >
-                    <label for="email">Your email</label>
-                </div>
+        <pm-modal-body>
+            <form [formGroup]="loginForm">
+            <div class="md-form">
+                <i class="material-icons prefix">email</i>
+                <input formControlName="email" [class.invalid]="formErrors.email"
+                    id="email" type="text" class="form-control">
+                <label for="email">Your email</label>
+                <div *ngIf="formErrors.email" class="has-error hint">{{ formErrors.email }}</div>
+            </div>
 
-                <div class="md-form">
-                    <i class="material-icons prefix">lock_outline</i>
-                    <input type="password"
-                        [(ngModel)]='user.password'
-                        id="password"
-                        class="form-control"
-                    >
-                    <label for="password">Your password</label>
-                </div>
-                <p *ngIf="isAccessDenied" class="text-xs-center has-error">
-                    Invalid email or password!
-                </p>
-                <div class="text-xs-center">
-                    <button class="btn btn-default tail-color btn-lg" [disabled]="isLoading" (click)="login()">
-                        <pm-spinner *ngIf="isLoading"></pm-spinner>
-                        <span *ngIf="!isLoading">Login</span>
-                    </button>
-                </div>
-            </pm-modal-body>
 
-            <pm-modal-footer>
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-            </pm-modal-footer>
+            <div class="md-form">
+                <i class="material-icons prefix">lock_outline</i>
+                <input formControlName="password" [class.invalid]="formErrors.password"
+                    type="password" id="password" class="form-control">
+                <label for="password">Your password</label>
+                <div *ngIf="formErrors.password" class="has-error hint">{{ formErrors.password }}</div>
+            </div>
+            <p *ngIf="isAccessDenied" class="text-xs-center has-error">
+                Invalid email or password!
+            </p>
+            <div class="text-xs-center">
+                <button class="btn btn-default tail-color btn-lg" [disabled]="isLoading" (click)="login()">
+                    <pm-spinner *ngIf="isLoading"></pm-spinner>
+                    <span *ngIf="!isLoading">Login</span>
+                </button>
+            </div>
+            </form>
+        </pm-modal-body>
+
+        <pm-modal-footer>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </pm-modal-footer>
+
 </pm-modal>

@@ -6,6 +6,11 @@ $red-color: #CC0000;
     color: $tail-color;
 }
 
+.hint {
+    margin-left: 50px;
+    font-size: 13px;
+}
+
 input[type=date]:focus:not([readonly]),
 input[type=datetime-local]:focus:not([readonly]),
 input[type=email]:focus:not([readonly]),
@@ -21,9 +26,22 @@ textarea.md-textarea:focus:not([readonly]) {
     border-bottom: 1px solid $tail-color;
     box-shadow: 0 1px 0 0 $tail-color;
 
-    +label{
+    +label {
         color: $tail-color;
     }
+
+    &.invalid {
+        border-bottom: 1px solid $red-color;
+        box-shadow: 0 1px 0 0 $red-color;
+
+        +label {
+            color: $red-color;
+        }
+    }
+}
+
+.invalid {
+    margin-bottom: 0px;
 }
 
 .has-error {
