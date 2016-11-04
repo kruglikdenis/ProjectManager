@@ -1,0 +1,19 @@
+<div class="modal fade modal-ext" [id]="identifier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <ng-content select="pm-modal-header"></ng-content>
+            </div>
+
+            <div class="modal-body">
+                <ng-content select="pm-modal-body"></ng-content>
+            </div>
+
+            <div class="modal-footer">
+                <ng-content select="pm-modal-footer"></ng-content>
+            </div>
+
+        </div>
+    </div>
+</div>

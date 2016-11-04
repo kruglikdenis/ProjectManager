@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
+import { ModalService } from '../../shared/services/modal.service';
 
 @Component({
     selector: 'pm-navbar',
@@ -7,10 +8,13 @@ import { AuthService } from '../../shared/services/auth.service';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-    constructor(private authService: AuthService) {}
+    constructor(
+        private authService: AuthService,
+        private modalService: ModalService
+    ) {}
 
     openLoginModal() {
-        $('#loginModal').modal('show');
+        this.modalService.open('loginModal');
     }
 
     logout() {

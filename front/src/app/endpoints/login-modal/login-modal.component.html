@@ -1,15 +1,13 @@
-<div class="modal fade modal-ext" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade modal-ext" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content"> -->
+        <pm-modal [identifier]="id">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <pm-modal-header>
                 <h3><i class="material-icons">people</i> Login</h3>
-            </div>
+            </pm-modal-header>
 
-            <div class="modal-body">
+            <pm-modal-body>
                 <div class="md-form">
                     <i class="material-icons prefix">email</i>
                     <input [(ngModel)]="user.email"
@@ -33,13 +31,14 @@
                     Invalid email or password!
                 </p>
                 <div class="text-xs-center">
-                    <button class="btn btn-default tail-color btn-lg" (click)="login()">Login</button>
+                    <button class="btn btn-default tail-color btn-lg" [disabled]="isLoading" (click)="login()">
+                        <pm-spinner *ngIf="isLoading"></pm-spinner>
+                        <span *ngIf="!isLoading">Login</span>
+                    </button>
                 </div>
-            </div>
+            </pm-modal-body>
 
-            <div class="modal-footer">
+            <pm-modal-footer>
                 <button type="button" class="btn" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+            </pm-modal-footer>
+</pm-modal>
