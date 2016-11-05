@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
 import { emailValidator } from '../../shared/validators/email-validator.directive';
 
 @Component({
-    selector: 'pm-login-modal',
-    templateUrl: './login-modal.component.html',
-    styleUrls: ['./login-modal.component.scss'],
+    selector: 'pm-register-modal',
+    templateUrl: './register-modal.component.html',
+    styleUrls: ['./register-modal.component.scss'],
 })
-export class LoginModalComponent implements OnInit {
-    id: string = 'loginModal'
+export class RegisterModalComponent implements OnInit {
+    id: string = 'registerModal'
 
-    loginForm: FormGroup;
+    registerForm: FormGroup;
 
     isLoading: boolean;
 
@@ -31,7 +31,8 @@ export class LoginModalComponent implements OnInit {
 
         this.formErrors = {
             email: '',
-            password: ''
+            password: '',
+            repeatPassword: ''
         };
 
         this.validationMessages = {
@@ -41,6 +42,9 @@ export class LoginModalComponent implements OnInit {
             },
             password: {
                 required: 'Password is required.'
+            },
+            repeatPassword: {
+                required: 'Repeat password is required.'
             }
         }
     }
@@ -49,42 +53,19 @@ export class LoginModalComponent implements OnInit {
         this.buildForm();
     }
 
-    login() {
-        this.isLoading = true;
-
-        const user = new AuthUser(this.loginForm.value.email, this.loginForm.value.password);
-
-        this.authService.login(user)
-            .then(() => {
-                this.isLoading = false;
-                this.modalService.close(this.id);
-            })
-            .catch(() => {
-                this.isLoading = false;
-
-                this.formErrors.email = this.formErrors.password = 'Incorrenct email or password.';
-            })
-        ;
-    }
-
-    openRegisterModal() {
-        this.modalService.close(this.id);
-
-        this.modalService.open('registerModal');
-    }
-
     buildForm(): void {
-        this.loginForm = this.builder.group({
-            'email':  ['', [Validators.required, emailValidator()]],
-            'password': ['', [Validators.required]]
+        this.registerForm = this.builder.group({
+            email:  ['', [Validators.required, emailValidator()]],
+            password: ['', [Validators.required]],
+            repeatPassword: ['', [Validators.required]],
         });
 
-        this.loginForm.valueChanges.subscribe(data => this.onValueChanged(data));
+        this.registerForm.valueChanges.subscribe(data => this.onValueChanged(data));
         this.onValueChanged();
     }
 
     onValueChanged(data?: any) {
-        const form = this.loginForm;
+        const form = this.registerForm;
 
         for (const field in this.formErrors) {
             // clear previous error message (if any)

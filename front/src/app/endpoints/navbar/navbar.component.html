@@ -14,7 +14,7 @@
           <ul class="nav navbar-nav float-right">
               <li *ngIf="!isAuthorized" class="nav-item">
                   <a class="nav-link" (click)="openLoginModal()">
-                      Log in
+                      LogIn
                   </a>
               </li>
               <li *ngIf="isAuthorized" class="nav-item btn-group">
@@ -24,7 +24,7 @@
                     </i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-                    <a class="dropdown-item" (click)="logout()">Log out</a>
+                    <a class="dropdown-item" (click)="logout()">LogOut</a>
                 </div>
               </li>
           </ul>

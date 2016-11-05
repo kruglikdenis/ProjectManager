@@ -1,5 +1,6 @@
 <pm-navbar (onOpenLoginModal)="openLoginModal();"></pm-navbar>
 
-<pm-login-modal *ngIf="!isAuthorized"></pm-login-modal>
-
 <router-outlet></router-outlet>
+
+<pm-login-modal *ngIf="!isAuthorized"></pm-login-modal>
+<pm-register-modal *ngIf="!isAuthorized"></pm-register-modal>

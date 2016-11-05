@@ -1,11 +1,11 @@
 <pm-modal [identifier]="id">
 
     <pm-modal-header>
-        <h3><i class="material-icons">people</i>Log in</h3>
+        <h3><i class="material-icons">people</i>Register</h3>
     </pm-modal-header>
 
     <pm-modal-body>
-        <form [formGroup]="loginForm">
+        <form [formGroup]="registerForm">
         <div class="md-form">
             <i class="material-icons prefix">email</i>
             <input formControlName="email" [class.invalid]="formErrors.email"
@@ -13,7 +13,6 @@
             <label for="email">Your email</label>
             <div *ngIf="formErrors.email" class="has-error hint">{{ formErrors.email }}</div>
         </div>
-
 
         <div class="md-form">
             <i class="material-icons prefix">lock_outline</i>
@@ -23,13 +22,20 @@
             <div *ngIf="formErrors.password" class="has-error hint">{{ formErrors.password }}</div>
         </div>
 
+        <div class="md-form">
+            <i class="material-icons prefix">lock_outline</i>
+            <input formControlName="repeatPassword" [class.invalid]="formErrors.repeatPassword"
+                type="password" id="password" class="form-control">
+            <label for="password">Repeat password</label>
+            <div *ngIf="formErrors.repeatPassword" class="has-error hint">{{ formErrors.repeatPassword }}</div>
+        </div>
+
         <div class="text-xs-center">
             <button class="btn btn-default tail-color btn-lg"
-                [disabled]="!loginForm.valid"
-                (click)="login()"
+
             >
                 <pm-spinner *ngIf="isLoading"></pm-spinner>
-                <span *ngIf="!isLoading">Login</span>
+                <span *ngIf="!isLoading">Sign Up</span>
             </button>
         </div>
         </form>
@@ -37,7 +43,7 @@
 
     <pm-modal-footer>
         <div class="options">
-            <p>Not a member? <a href="#" (click)="openRegisterModal()">Sign Up</a></p>
+            <p>Already have an account? <a href="#">Log in</a></p>
         </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </pm-modal-footer>

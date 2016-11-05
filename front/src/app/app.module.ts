@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './endpoints/home/home.component';
 import { LoginModalComponent } from './endpoints/login-modal/login-modal.component';
+import { RegisterModalComponent } from './endpoints/register-modal/register-modal.component';
 import { NavbarComponent } from './endpoints/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
@@ -39,6 +40,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   declarations: [
     AppComponent,
     LoginModalComponent,
+    RegisterModalComponent,
     NavbarComponent,
     HomeComponent,
     AdminComponent,
