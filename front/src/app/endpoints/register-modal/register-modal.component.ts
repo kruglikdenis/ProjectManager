@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthUser } from '../../shared/models/auth-user';
-import { AuthService } from '../../shared/services/auth.service';
+import { UserService } from '../../shared/services/user.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { Router } from '@angular/router';
-import { emailValidator } from '../../shared/validators/email-validator.directive';
+import { emailValidator } from '../../shared/validators/email.validator';
+import { areEqualValidator } from '../../shared/validators/equal.validator';
 
 @Component({
     selector: 'pm-register-modal',
@@ -22,7 +23,7 @@ export class RegisterModalComponent implements OnInit {
     validationMessages: Object;
 
     constructor(
-        private authService: AuthService,
+        private userService: UserService,
         private modalService: ModalService,
         private router: Router,
         private builder: FormBuilder
@@ -41,12 +42,20 @@ export class RegisterModalComponent implements OnInit {
                 incorrectMailFormat: 'Incorrect email format.'
             },
             password: {
-                required: 'Password is required.'
+                required: 'Password is required.',
+                minlength: 'Length should be greater than 6 characters.'
             },
             repeatPassword: {
-                required: 'Repeat password is required.'
+                required: 'Repeat password is required.',
+                areEqual: 'Passwords should be equal.'
             }
-        }
+        };
+    }
+
+    register() {
+        let user = new AuthUser(this.registerForm.value.email, this.registerForm.value.password);
+
+        this.userService.register(user);
     }
 
     ngOnInit(): void {
@@ -56,8 +65,8 @@ export class RegisterModalComponent implements OnInit {
     buildForm(): void {
         this.registerForm = this.builder.group({
             email:  ['', [Validators.required, emailValidator()]],
-            password: ['', [Validators.required]],
-            repeatPassword: ['', [Validators.required]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            repeatPassword: ['', [Validators.required, areEqualValidator('password')]],
         });
 
         this.registerForm.valueChanges.subscribe(data => this.onValueChanged(data));

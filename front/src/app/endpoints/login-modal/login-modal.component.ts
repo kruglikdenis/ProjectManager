@@ -4,7 +4,7 @@ import { AuthUser } from '../../shared/models/auth-user';
 import { AuthService } from '../../shared/services/auth.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { Router } from '@angular/router';
-import { emailValidator } from '../../shared/validators/email-validator.directive';
+import { emailValidator } from '../../shared/validators/email.validator';
 
 @Component({
     selector: 'pm-login-modal',

@@ -32,7 +32,8 @@
 
         <div class="text-xs-center">
             <button class="btn btn-default tail-color btn-lg"
-
+                [disabled]="!registerForm.valid"
+                (click)="register()"
             >
                 <pm-spinner *ngIf="isLoading"></pm-spinner>
                 <span *ngIf="!isLoading">Sign Up</span>
