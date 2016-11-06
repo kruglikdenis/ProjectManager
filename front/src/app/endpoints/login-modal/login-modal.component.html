@@ -24,8 +24,8 @@
         </div>
 
         <div class="text-xs-center">
-            <button class="btn btn-default tail-color btn-lg"
-                [disabled]="!loginForm.valid"
+            <button class="btn btn-default btn-lg"
+                [class.disabled]="!loginForm.valid"
                 (click)="login()"
             >
                 <pm-spinner *ngIf="isLoading"></pm-spinner>

@@ -4,7 +4,8 @@ import { AuthUser } from '../../shared/models/auth-user';
 import { AuthService } from '../../shared/services/auth.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { Router } from '@angular/router';
-import { emailValidator } from '../../shared/validators/email.validator';
+import { emailValidator } from '../../shared/validation/validators/email.validator';
+import { validationMessages } from '../../shared/validation/messages/validator.messages';
 
 @Component({
     selector: 'pm-login-modal',
@@ -33,16 +34,6 @@ export class LoginModalComponent implements OnInit {
             email: '',
             password: ''
         };
-
-        this.validationMessages = {
-            email: {
-                required: 'Email is required.',
-                incorrectMailFormat: 'Incorrect email format.'
-            },
-            password: {
-                required: 'Password is required.'
-            }
-        }
     }
 
     ngOnInit(): void {
@@ -59,10 +50,11 @@ export class LoginModalComponent implements OnInit {
                 this.isLoading = false;
                 this.modalService.close(this.id);
             })
-            .catch(() => {
+            .catch(error => {
                 this.isLoading = false;
 
-                this.formErrors.email = this.formErrors.password = 'Incorrenct email or password.';
+                let body = error.json();
+                this.formErrors.email = this.formErrors.password = body.message;
             })
         ;
     }
@@ -91,7 +83,7 @@ export class LoginModalComponent implements OnInit {
             this.formErrors[field] = '';
             const control = form.get(field);
             if (control && control.dirty && !control.valid) {
-                const messages = this.validationMessages[field];
+                const messages = validationMessages[field];
                 for (const key in control.errors) {
                     this.formErrors[field] += messages[key] + ' ';
                 }

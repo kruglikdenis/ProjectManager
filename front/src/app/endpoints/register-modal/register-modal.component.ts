@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthUser } from '../../shared/models/auth-user';
 import { UserService } from '../../shared/services/user.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { ModalService } from '../../shared/services/modal.service';
 import { Router } from '@angular/router';
-import { emailValidator } from '../../shared/validators/email.validator';
-import { areEqualValidator } from '../../shared/validators/equal.validator';
+import { emailValidator } from '../../shared/validation/validators/email.validator';
+import { areEqualValidator } from '../../shared/validation/validators/equal.validator';
+import { validationMessages } from '../../shared/validation/messages/validator.messages';
 
 @Component({
     selector: 'pm-register-modal',
@@ -24,6 +26,7 @@ export class RegisterModalComponent implements OnInit {
 
     constructor(
         private userService: UserService,
+        private authSrvice: AuthService,
         private modalService: ModalService,
         private router: Router,
         private builder: FormBuilder
@@ -35,27 +38,25 @@ export class RegisterModalComponent implements OnInit {
             password: '',
             repeatPassword: ''
         };
-
-        this.validationMessages = {
-            email: {
-                required: 'Email is required.',
-                incorrectMailFormat: 'Incorrect email format.'
-            },
-            password: {
-                required: 'Password is required.',
-                minlength: 'Length should be greater than 6 characters.'
-            },
-            repeatPassword: {
-                required: 'Repeat password is required.',
-                areEqual: 'Passwords should be equal.'
-            }
-        };
     }
 
     register() {
+        this.isLoading = true;
         let user = new AuthUser(this.registerForm.value.email, this.registerForm.value.password);
 
-        this.userService.register(user);
+        this.userService.register(user)
+            .then(() => this.authSrvice.login(user))
+            .then(() => {
+                this.isLoading = false;
+
+                this.modalService.close(this.id);
+            })
+            .catch(error => {
+                this.isLoading = false;
+
+                let body = error.json();
+                this.formErrors.email = body.email;
+            });
     }
 
     ngOnInit(): void {
@@ -81,7 +82,7 @@ export class RegisterModalComponent implements OnInit {
             this.formErrors[field] = '';
             const control = form.get(field);
             if (control && control.dirty && !control.valid) {
-                const messages = this.validationMessages[field];
+                const messages = validationMessages[field];
                 for (const key in control.errors) {
                     this.formErrors[field] += messages[key] + ' ';
                 }

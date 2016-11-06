@@ -5,18 +5,18 @@ $tail-dark-color: #004d40;
 $red-color: #CC0000;
 
 body {
-  margin: 0px;
+    margin: 0px;
 }
 
 body {
-  margin: 0;
-  background-color: $gray-color;
-  width: 100%;
+    margin: 0;
+    background-color: $gray-color;
+    width: 100%;
 }
 
 input {
-  height: 30px;
-  outline: none;
+    height: 30px;
+    outline: none;
 }
 
 input:-webkit-autofill{
@@ -29,9 +29,9 @@ input:-webkit-autofill{
 }
 
 a:hover, a:focus {
-  color: $gray-light-color;
-  text-decoration: none;
-  outline: none;
+    color: $gray-light-color;
+    text-decoration: none;
+    outline: none;
 }
 
 [md-menu-item] {
@@ -91,10 +91,10 @@ textarea.md-textarea:focus:not([readonly]) {
     animation-duration: 2s;
 }
 
-.tail-color {
+.btn-default {
     background-color: $tail-color!important;
 
-    &:hover {
+    &:hover, &:focus {
         background-color: $tail-dark-color!important;
     }
 }

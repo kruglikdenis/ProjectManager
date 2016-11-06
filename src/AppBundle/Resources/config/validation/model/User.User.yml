@@ -1,6 +1,9 @@
 CoreDomain\Model\User\User:
     constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [email]
+            errorPath: email
+            message: 'This email is already in use.'
     properties:
         email:
             - Email: ~

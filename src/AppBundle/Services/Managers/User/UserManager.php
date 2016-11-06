@@ -54,7 +54,7 @@ class UserManager
         $user = $this->userRepository->findOneByEmail($email);
 
         if(!$user || !$this->passwordEncoder->isPasswordValid($password, $user->getPassword(), $user->getSalt())) {
-            throw new EntityNotFoundException('Неверный логин или пароль');
+            throw new EntityNotFoundException('Incorrenct email or password.');
         }
 
         $userSession = $user->login();
