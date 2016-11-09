@@ -1,7 +1,7 @@
 ---
 - name: Add ppa Repository
   become: yes
-  apt_repository: repo=ppa:ondrej/{{ php.ppa }}
+  apt_repository: repo=ppa:ondrej/php
   when: ansible_distribution == 'Ubuntu'
 
 - name: Update apt
@@ -10,7 +10,7 @@
 
 - name: Install php5
   become: yes
-  apt: pkg=php5 state=latest
+  apt: pkg=php5.6
 
 #- name: Install php5-fpm
 #  become: yes
@@ -18,9 +18,17 @@
 
 - name: Install PHP Packages
   become: yes
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ item }}
   with_items: php.packages
   when: php.packages is defined
+
+- name: Enabled php 5.6
+  become: yes
+  file:
+    src=/usr/bin/php5.6
+    dest=/etc/alternatives/php
+    force=yes
+    mode="u=rw,g=r,o=r"
 
 - include: configure.yml
 - include: pecl.yml
