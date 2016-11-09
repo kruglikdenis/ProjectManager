@@ -2,7 +2,7 @@ export class Session {
     userId: number;
     token: string;
     email: string;
-    roles: Array<string>
+    roles: Array<string>;
 
     constructor(userId = 0, token = '', email = '', roles = []) {
         this.userId = userId;

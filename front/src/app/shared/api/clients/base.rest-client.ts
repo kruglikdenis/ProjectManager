@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, URLSearchParams } from '@angular/http';
+import { BaseResponse } from './../../models/response';
 import { ITransformer } from '../transformers/interface.transformer';
 import { StorageService } from '../../services/storage.service';
 import { Observable } from 'rxjs/Observable';
+import { AppSettings } from './../../../app.settings';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BaseRestClient {
     private AUTHORIZATION_HEADER = 'Authorization';
 
-    private baseUrl = API_URL;
     private headers: Headers;
 
     constructor(
@@ -24,7 +25,7 @@ export class BaseRestClient {
     public get(url, params: Object, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
-            .get(this.baseUrl + url, {
+            .get(AppSettings.API_ENDPOINT + url, {
                     headers: this.headers,
                     search: this.initUrlSearchParams(params)
                 }
@@ -36,7 +37,7 @@ export class BaseRestClient {
     public post(url, data, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
-            .post(this.baseUrl + url, data, {headers: this.headers});
+            .post(AppSettings.API_ENDPOINT + url, data, {headers: this.headers});
 
         return this.toPromice(observable, transformer);
     }
@@ -44,7 +45,7 @@ export class BaseRestClient {
     public delete(url, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http
-            .delete(this.baseUrl + url, {headers: this.headers});
+            .delete(AppSettings.API_ENDPOINT + url, {headers: this.headers});
 
         return this.toPromice(observable, transformer);
     }
@@ -57,7 +58,7 @@ export class BaseRestClient {
         if (transformer) {
             promice = promice.then(resource => {
                 return {
-                    headers: resource.headers || {},
+                    headers: resource.headers,
                     data: transformer.transform(resource.data)
                 };
             });
@@ -66,17 +67,12 @@ export class BaseRestClient {
         return promice;
     }
 
-    private extractData(responce: Response) {
-        if (responce.status >= 200 && responce.status < 300) {
-            if (responce.status !== 204) {
-                return {
-                    data: responce.json(),
-                    headers: responce.headers
-                }
+    private extractData(response: Response): BaseResponse {
+        if (response.status >= 200 && response.status < 300) {
+            if (response.status !== 204) {
+                return new BaseResponse(response);
             }
         }
-
-        return {};
     }
 
     private authorize() {

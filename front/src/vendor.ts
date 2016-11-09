@@ -16,4 +16,4 @@ import 'mdbootstrap/css/bootstrap.min';
 import 'mdbootstrap/css/mdb.min';
 import 'mdbootstrap/js/bootstrap.min';
 import 'mdbootstrap/js/mdb.min';
-import "webpack-material-design-icons";
+import 'webpack-material-design-icons';
