@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { JQueryStatic } from '@types/jquery';
 
-declare var $:JQueryStatic;
+declare var $:any;
 
 @Injectable()
 export class ModalService {
