@@ -51,6 +51,7 @@ export class BaseRestClient {
     }
 
     private toPromice(observable: Observable<Response>, transformer: ITransformer) {
+        // noinspection TypeScriptUnresolvedFunction
         let promice = observable
             .toPromise()
             .then(this.extractData);
@@ -88,11 +89,13 @@ export class BaseRestClient {
         return this;
     }
 
-    private initUrlSearchParams(resource: Object) {
+    private initUrlSearchParams(resource: any) {
         let params: URLSearchParams = new URLSearchParams();
 
         for (let key in resource) {
-            params.set(key, resource[key]);
+            if (resource.hasOwnProperty(key)) {
+                params.set(key, resource[key]);
+            }
         }
 
         return params;

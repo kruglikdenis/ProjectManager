@@ -8,7 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class PaginationComponent {
     @Output() onChangePage = new EventEmitter();
 
-    private page:number;
+    private page: number;
 
     constructor() {
         this.page = 1;

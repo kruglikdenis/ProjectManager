@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-declare var $:any;
+declare var $: any;
 
 @Injectable()
 export class ModalService {

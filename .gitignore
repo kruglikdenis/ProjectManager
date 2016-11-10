@@ -1,8 +1,6 @@
 /build/
 /phpunit.xml
-/app/cache/
 /app/config/parameters.yml
-/app/logs/
 /vendor/
 /web/bundles/
 /.idea/
@@ -10,3 +8,6 @@
 /front/node_modules/
 /front/dist/
 npm-debug.log*
+/app/bootstrap.php.cache
+app/cache/
+app/logs/

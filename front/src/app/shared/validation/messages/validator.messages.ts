@@ -1,4 +1,4 @@
-export const validationMessages = {
+export const validationMessages: { [key: string]: any } = {
     email: {
         required: 'Email is required.',
         incorrectMailFormat: 'Incorrect email format.'

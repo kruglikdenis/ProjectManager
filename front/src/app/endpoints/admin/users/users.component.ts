@@ -33,7 +33,7 @@ export class AdminUsersComponent implements OnInit {
 
         this.isLoading = true;
         this.userService.search(this.search, this.limit, offset)
-            .then(({ data, headers }) => {
+            .then(({ data }) => {
                 this.users = data;
                 this.isLoading = false;
             })
