@@ -6,6 +6,7 @@ import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './endpoints/home/home.component';
+import { ProjectsComponent } from './endpoints/projects/projects.component';
 import { LoginModalComponent } from './endpoints/login-modal/login-modal.component';
 import { RegisterModalComponent } from './endpoints/register-modal/register-modal.component';
 import { NavbarComponent } from './endpoints/navbar/navbar.component';
@@ -28,53 +29,58 @@ import { OVERLAY_PROVIDERS } from '@angular/material';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule.forRoot(),
+    imports: [
+        BrowserModule,
+        HttpModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule.forRoot(),
 
-    routing
-  ],
-  declarations: [
-    AppComponent,
-    LoginModalComponent,
-    RegisterModalComponent,
-    NavbarComponent,
-    HomeComponent,
-    AdminComponent,
-    AdminUsersComponent,
-    AdminProjectsComponent,
-    SearchComponent,
-    UserCardComponent,
-    PaginationComponent,
-    ModalComponent,
-    ModalHeaderComponent,
-    ModalBodyComponent,
-    ModalFooterComponent,
-    SpinnerComponent
-  ],
-  providers: [
-      OVERLAY_PROVIDERS
-  ],
-  bootstrap: [AppComponent],
+        routing
+    ],
+    declarations: [
+        AppComponent,
+        LoginModalComponent,
+        RegisterModalComponent,
+        NavbarComponent,
+        HomeComponent,
+        ProjectsComponent,
+        AdminComponent,
+        AdminUsersComponent,
+        AdminProjectsComponent,
+        SearchComponent,
+        UserCardComponent,
+        PaginationComponent,
+        ModalComponent,
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalFooterComponent,
+        SpinnerComponent
+    ],
+    providers: [
+        OVERLAY_PROVIDERS
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
-  hmrOnInit(store) {
-    console.log('HMR store', store);
-  }
-  hmrOnDestroy(store) {
-    let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    // recreate elements
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    // remove styles
-    removeNgStyles();
-  }
-  hmrAfterDestroy(store) {
-    // display new elements
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
-  }
+    constructor(public appRef: ApplicationRef) {
+    }
+
+    hmrOnInit(store) {
+        console.log('HMR store', store);
+    }
+
+    hmrOnDestroy(store) {
+        let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+        // recreate elements
+        store.disposeOldHosts = createNewHosts(cmpLocation);
+        // remove styles
+        removeNgStyles();
+    }
+
+    hmrAfterDestroy(store) {
+        // display new elements
+        store.disposeOldHosts();
+        delete store.disposeOldHosts;
+    }
 }

@@ -1,3 +1,5 @@
+$tail-color: #00695c;
+
 .brand {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     padding: 10px;
@@ -13,10 +15,19 @@
     float: right;
 }
 
-.container {
-    margin-right: 0px;
+.float-left {
+    float: left;
 }
 
 .icon {
     font-size: 16px;
+}
+
+.dropdown-item {
+    margin: 0px 5px;
+}
+
+.dropdown-item:hover {
+    background-color: $tail-color;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }

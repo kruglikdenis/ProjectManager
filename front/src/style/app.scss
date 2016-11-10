@@ -1,3 +1,5 @@
+@import "table";
+
 $gray-color: #E0E0E0;
 $gray-light-color: #FAFAFA;
 $tail-color: #00695c;
@@ -9,7 +11,7 @@ body {
 }
 
 body {
-    margin: 0;
+    margin-top: 100px;
     background-color: $gray-color;
     width: 100%;
 }
@@ -114,3 +116,5 @@ a {
         color: $tail-dark-color;
     }
 }
+
+
