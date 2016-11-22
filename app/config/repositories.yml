@@ -1,5 +1,10 @@
 services:
 
+    app.repository.project.project:
+        class: AppBundle\Repository\Project\ProjectRepository
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+
     app.repository.user.user:
         class: AppBundle\Repository\User\UserRepository
         arguments:

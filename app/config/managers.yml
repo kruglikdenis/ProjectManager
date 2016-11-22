@@ -1,5 +1,10 @@
 services:
 
+    app.managers.project.project:
+        class: AppBundle\Services\Managers\Project\ProjectManager
+        arguments:
+            - "@app.repository.project.project"
+
     # User
     app.managers.user.user:
         class: AppBundle\Services\Managers\User\UserManager

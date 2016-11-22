@@ -1,0 +1,19 @@
+CoreDomain\Model\Project\Project:
+    exclusion_policy: ALL
+    properties:
+        id:
+            type: integer
+            groups:
+                - api_project_get
+        title:
+            type: string
+            groups:
+                - api_project_get
+        description:
+            type: string
+            groups:
+                - api_project_get
+        code:
+            type: string
+            groups:
+                - api_project_get

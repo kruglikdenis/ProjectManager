@@ -1,3 +1,8 @@
+app_project:
+    resource: AppBundle\Controller\Project\ProjectController
+    type: rest
+    name_prefix: project_
+
 app_user:
     resource: AppBundle\Controller\User\UserController
     type: rest
