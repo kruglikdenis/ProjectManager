@@ -5,9 +5,9 @@
     height: 3em;
 }
 .loader {
+    box-sizing: border-box;
     font-size: 10px;
     position: relative;
-    text-indent: -9999em;
     border-top: 0.3em solid rgba(249,249,249, 0.2);
     border-right: 0.3em solid rgba(249,249,249, 0.2);
     border-bottom: 0.3em solid rgba(249,249,249, 0.2);

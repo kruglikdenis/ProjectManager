@@ -19,7 +19,8 @@ class ProjectController extends Controller
      *      "searchDTO",
      *      converter="fos_rest.request_body",
      *      options={
-     *          "deserializationContext"={"groups"="api_project_search"}
+     *          "deserializationContext"={"groups"="api_project_search"},
+     *          "validator"={"groups"={"api_project_search"}}
      *      }
      * )
      */

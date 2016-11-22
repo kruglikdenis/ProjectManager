@@ -27,7 +27,18 @@ class ProjectRepository implements ProjectRepositoryInterface
     {
         $qb = $this->em->createQueryBuilder()
             ->select('p')
-            ->from(Project::class, 'p');
+            ->from(Project::class, 'p')
+            ->where('p.isDeleted = :isDeleted')
+            ->setParameter('isDeleted', false);
+
+        if ($searchDTO->title) {
+            $qb->andWhere(
+                $qb->expr()->like(
+                    $qb->expr()->lower('p.title'),
+                    $qb->expr()->lower(':name')
+                )
+            )->setParameter('name', "%$searchDTO->title%");
+        }
 
         return $qb
             ->setMaxResults($searchDTO->limit)

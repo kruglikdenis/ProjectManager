@@ -1,9 +1,15 @@
 CoreDomain\DTO\Project\SearchDTO:
     exclusion_policy: ALL
     properties:
+        title:
+            type: string
+            groups:
+                - api_project_search
         limit:
             type: string
-            groups: [api_user_search]
+            groups:
+                - api_project_search
         offset:
             type: string
-            groups: [api_user_search]
+            groups:
+                - api_project_search

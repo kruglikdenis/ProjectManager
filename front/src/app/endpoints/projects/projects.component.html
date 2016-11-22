@@ -1,23 +1,13 @@
 <div class="container">
+    <pm-search [isLoading]="isLoading" (onChangeSearch)="changeSearchQuery($event)"></pm-search>
     <table class="table">
-        <thead>
-            <tr role="row">
-                <th>Title</th>
-                <th>Title</th>
-                <th>Title</th>
-            </tr>
-        </thead>
         <tbody>
-            <tr role="row">
-                <td>Title</td>
-                <td>Title</td>
-                <td>Title</td>
-            </tr>
-            <tr role="row">
-                <td>Title</td>
-                <td>Title</td>
-                <td>Title</td>
+            <tr *ngFor="let project of projects" role="row">
+                <td>{{ project.code }}</td>
+                <td>{{ project.title }}</td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<a class="add-project-btn"><i class="material-icons">add</i></a>
