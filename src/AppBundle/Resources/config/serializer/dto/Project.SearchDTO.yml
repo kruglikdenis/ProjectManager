@@ -3,13 +3,10 @@ CoreDomain\DTO\Project\SearchDTO:
     properties:
         title:
             type: string
-            groups:
-                - api_project_search
+            groups: [api_project_search]
         limit:
             type: string
-            groups:
-                - api_project_search
+            groups: [api_project_search]
         offset:
             type: string
-            groups:
-                - api_project_search
+            groups: [api_project_search]
