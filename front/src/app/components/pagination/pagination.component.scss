@@ -1,16 +1,8 @@
-$tail-color: #00695c;
-
-.pagination {
-  margin-top: 10px;
+.center {
+  justify-content: center;
   display: flex;
-  justify-content: space-between;
+}
 
-  span {
-    align-self: center;
-  }
-
-  button {
-    background-color: $tail-color;
-    
-  }
+.page-link {
+  color: #004d40;
 }
