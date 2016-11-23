@@ -3,12 +3,32 @@
   display: flex;
 }
 
+@mixin active() {
+  font-size: 24px;
+  i {
+    font-size: 24px;
+  }
+  background-color: rgba(255, 255 , 255, 0.3);
+}
+
+.active {
+  a {
+    @include active();
+    color: #004d40;
+    background-color: inherit;
+    &:hover {
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+}
+
 .page-link {
   color: #004d40;
   background-color: inherit;
 
   &:hover {
-    background-color: rgba(255, 255 , 255, 0.3);
+    @include active();
   }
 }
 
@@ -28,4 +48,8 @@
 
 .next {
   text-align: end;
+}
+
+.disabled {
+  pointer-events: none;
 }

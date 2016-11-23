@@ -10,11 +10,19 @@ import { ProjectService } from '../../shared/services/project.service';
 export class ProjectsComponent implements OnInit {
     isLoading: boolean;
     searchQuery: string;
+
     projects: Array<Project>;
+    totalCountProjects: number;
+    limit: number;
+    page: number;
 
     constructor(private projectService: ProjectService) {
-        this.searchQuery = '';
         this.isLoading = false;
+
+        this.searchQuery = '';
+        this.totalCountProjects = 0;
+        this.limit = 10;
+        this.page = 1;
     }
 
     ngOnInit(): void {
@@ -27,12 +35,18 @@ export class ProjectsComponent implements OnInit {
         this.search();
     }
 
+    changePage(page) {
+        this.page = page;
+    }
+
     search() {
         this.isLoading = true;
 
-        this.projectService.search(this.searchQuery)
-            .then(({ data }) => {
-                this.projects = data;
+        this.projectService.search(this.searchQuery, this.limit, this.page)
+            .then(({ projects, totalCount }) => {
+                this.projects = projects;
+                this.totalCountProjects = Number(totalCount);
+
                 this.isLoading = false;
             })
         ;

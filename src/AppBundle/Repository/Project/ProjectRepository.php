@@ -21,9 +21,10 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     /**
      * @param SearchDTO $searchDTO
-     * @return array<Project>
+     * @param bool $isOnlyCount
+     * @return array<Project>|integer
      */
-    public function search(SearchDTO $searchDTO)
+    public function search(SearchDTO $searchDTO, $isOnlyCount = false)
     {
         $qb = $this->em->createQueryBuilder()
             ->select('p')
@@ -38,6 +39,12 @@ class ProjectRepository implements ProjectRepositoryInterface
                     $qb->expr()->lower(':name')
                 )
             )->setParameter('name', "%$searchDTO->title%");
+        }
+
+        if ($isOnlyCount) {
+            return $qb->select('COUNT(p.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
         }
 
         return $qb

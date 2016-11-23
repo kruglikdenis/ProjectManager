@@ -17,10 +17,11 @@ class ProjectManager
 
     /**
      * @param SearchDTO $searchDTO
-     * @return array<Project>
+     * @param bool $isOnlyCount
+     * @return array<Project>|integer
      */
-    public function search(SearchDTO $searchDTO)
+    public function search(SearchDTO $searchDTO, $isOnlyCount = false)
     {
-        return $this->projectRepository->search($searchDTO);
+        return $this->projectRepository->search($searchDTO, $isOnlyCount);
     }
 }

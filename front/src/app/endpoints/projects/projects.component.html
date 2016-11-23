@@ -8,7 +8,8 @@
             </tr>
         </tbody>
     </table>
-    <pm-pagination></pm-pagination>
+    <pm-pagination (onChangePage)="changePage($event)" [totalCount]="totalCountProjects" [limit]="limit">
+    </pm-pagination>
 </div>
 
 <a class="add-project-btn"><i class="material-icons">add</i></a>

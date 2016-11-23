@@ -11,10 +11,16 @@ export class ProjectService {
         private listTransformer: ProjectListTransformer
     ) {}
 
-    search(search) {
-        let params = { title: search };
+    search(search, limit, page) {
+        let params = { title: search, limit, offset: (page - 1) * limit };
 
-        return this.restClient.get(this.PROJECT_URL, params, this.listTransformer);
+        return this.restClient.get(this.PROJECT_URL, params, this.listTransformer)
+            .then(({ data, headers }) => {
+                return {
+                    projects: data,
+                    totalCount: headers.get('x-total-count')
+                };
+            });
     }
 }
 
