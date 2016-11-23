@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../shared/models/project';
 import { ProjectService } from '../../shared/services/project.service';
+import { ModalService } from '../../shared/services/modal.service';
 
 @Component({
     selector: 'pm-projects',
@@ -16,7 +17,10 @@ export class ProjectsComponent implements OnInit {
     limit: number;
     page: number;
 
-    constructor(private projectService: ProjectService) {
+    constructor(
+        private projectService: ProjectService,
+        private modalService: ModalService
+    ) {
         this.isLoading = false;
 
         this.searchQuery = '';
@@ -37,6 +41,10 @@ export class ProjectsComponent implements OnInit {
 
     changePage(page) {
         this.page = page;
+    }
+
+    openModal() {
+        this.modalService.open('projectModal');
     }
 
     search() {

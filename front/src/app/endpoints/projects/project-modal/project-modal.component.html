@@ -1,0 +1,32 @@
+<pm-modal [identifier]="id">
+
+    <pm-modal-header>
+        <h3><i class="material-icons">assignment</i>Project</h3>
+    </pm-modal-header>
+
+    <pm-modal-body>
+        <form class="container">
+            <div class="md-form">
+                <input id="title" type="text" class="form-control">
+                <label for="title">Title</label>
+            </div>
+
+            <div class="md-form">
+                <i class="material-icons prefix">lock_outline</i>
+                <input type="password" id="password" class="form-control">
+                <label for="password">Your password</label>
+            </div>
+
+            <div class="text-xs-center">
+                <button class="btn btn-default btn-lg">
+                    <span>Save</span>
+                </button>
+            </div>
+        </form>
+    </pm-modal-body>
+
+    <pm-modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </pm-modal-footer>
+
+</pm-modal>

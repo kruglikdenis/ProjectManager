@@ -37,8 +37,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     get pages() {
         let pages = [];
 
-        console.log(this.countPages);
-
         this.minPage = 1;
         if (this.selected - this.halfCountPages > 0) {
             this.minPage = this.selected - this.halfCountPages;

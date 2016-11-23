@@ -12,4 +12,8 @@
     </pm-pagination>
 </div>
 
-<a class="add-project-btn"><i class="material-icons">add</i></a>
+<a (click)="openModal()" class="add-project-btn">
+    <i class="material-icons">add</i>
+</a>
+
+<pm-project-modal></pm-project-modal>
