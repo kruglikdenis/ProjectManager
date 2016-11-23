@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ValueChanged } from '../../../shared/validation/core/ValueChanged';
 
 
 @Component({
@@ -7,12 +8,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     templateUrl: './project-modal.component.html',
     styleUrls: ['./project-modal.component.scss'],
 })
-export class ProjectModalComponent {
+export class ProjectModalComponent extends ValueChanged implements OnInit {
     id: string = 'projectModal';
 
     projectForm: FormGroup;
 
     constructor() {
-
+        super();
     }
 }
