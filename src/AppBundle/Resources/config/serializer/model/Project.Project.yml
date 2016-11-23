@@ -5,15 +5,19 @@ CoreDomain\Model\Project\Project:
             type: integer
             groups:
                 - api_project_get
+                - api_project_search
         title:
             type: string
             groups:
                 - api_project_get
+                - api_project_search
         description:
             type: string
             groups:
                 - api_project_get
+                - api_project_search
         code:
             type: string
             groups:
                 - api_project_get
+                - api_project_search

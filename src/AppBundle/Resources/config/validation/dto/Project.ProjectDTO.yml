@@ -1,0 +1,14 @@
+CoreDomain\DTO\Project\ProjectDTO:
+    properties:
+        title:
+            - NotBlank:
+                groups: [api_project_create]
+                message: 'Заголовок проекта не должен быть пустым'
+        description:
+            - NotBlank:
+                groups: [api_project_create]
+                message: 'Описание проекта не должно быть пустым'
+        code:
+            - NotBlank:
+                groups: [api_project_create]
+                message: 'Индификатор не должен быть пустым'

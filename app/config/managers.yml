@@ -3,6 +3,7 @@ services:
     app.managers.project.project:
         class: AppBundle\Services\Managers\Project\ProjectManager
         arguments:
+            - "@doctrine.orm.default_entity_manager"
             - "@app.repository.project.project"
 
     # User

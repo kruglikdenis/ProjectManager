@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseRestClient } from '../api/clients/base.rest-client';
 import { ProjectListTransformer } from '../api/transformers/project-list.transformer';
+import { Project } from "../models/project";
 
 @Injectable()
 export class ProjectService {
@@ -21,6 +22,10 @@ export class ProjectService {
                     totalCount: headers.get('x-total-count')
                 };
             });
+    }
+
+    save(project: Project) {
+        return this.restClient.post(this.PROJECT_URL, project);
     }
 }
 

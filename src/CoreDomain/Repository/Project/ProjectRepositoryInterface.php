@@ -3,6 +3,7 @@
 namespace CoreDomain\Repository\Project;
 
 use CoreDomain\DTO\Project\SearchDTO;
+use CoreDomain\Model\Project\Project;
 
 interface ProjectRepositoryInterface
 {
@@ -12,4 +13,8 @@ interface ProjectRepositoryInterface
      * @return array<Project>|integer
      */
     public function search(SearchDTO $searchDTO, $isOnlyCount = false);
+
+    public function findOneById($id);
+    public function deleteById($id);
+    public function addAndSave(Project $project);
 }

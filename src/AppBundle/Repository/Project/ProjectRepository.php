@@ -4,7 +4,6 @@ namespace AppBundle\Repository\Project;
 
 use CoreDomain\DTO\Project\SearchDTO;
 use CoreDomain\Repository\Project\ProjectRepositoryInterface;
-
 use CoreDomain\Model\Project\Project;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,6 +16,43 @@ class ProjectRepository implements ProjectRepositoryInterface
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
+    }
+
+    public function findOneById($id)
+    {
+        $result = $this->em->createQueryBuilder()
+            ->select('p')
+            ->from(Project::class, 'p')
+            ->where('p.id = :id')
+            ->andWhere('p.isDeleted = :isDeleted')
+            ->setParameters(array(
+                'id' => $id,
+                'isDeleted' => false
+            ))
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $result;
+    }
+
+    public function addAndSave(Project $project)
+    {
+        $this->em->persist($project);
+        $this->em->flush();
+    }
+
+    public function deleteById($id)
+    {
+        $this->em->createQueryBuilder()
+            ->update(Project::class, 'p')
+            ->set('p.isDeleted', ':isDeleted')
+            ->where('p.id = :id')
+            ->setParameters(array(
+                'isDeleted' => true,
+                'id' => $id
+            ))
+            ->getQuery()
+            ->execute();
     }
 
     /**

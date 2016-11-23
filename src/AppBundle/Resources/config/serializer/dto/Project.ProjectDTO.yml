@@ -1,0 +1,12 @@
+CoreDomain\DTO\User\UserRegisterDTO:
+    exclusion_policy: ALL
+    properties:
+        title:
+            type: string
+            groups: [api_user_create, api_user_update]
+        description:
+            type: string
+            groups: [api_user_create, api_user_update]
+        code:
+            type: string
+            groups: [api_user_create, api_user_update]
