@@ -26,4 +26,4 @@ security:
         - { path: /api/(sessions|users), roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [POST] }
         - { path: /api/sessions$, roles: [ROLE_USER, ROLE_ADMIN], methods: [DELETE] }
         # - { path: /api/users/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: /api/users$, roles: [ROLE_ADMIN], methods: [GET] }
+        - { path: /api/users$, roles: [ROLE_ADMIN], methods: [GET] }

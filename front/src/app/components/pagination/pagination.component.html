@@ -1,6 +1,6 @@
 <nav class="center">
     <ul class="pagination pagination-lg">
-        <li class="page-item previous">
+        <li *ngIf="countPages !== 0" class="page-item previous">
             <a (click)="prev()" [class.disabled]="selected == 1" class="page-link" aria-label="Previous">
                 <i class="material-icons">keyboard_arrow_left</i>
             </a>
@@ -14,7 +14,7 @@
         <li *ngIf="maxPage !== countPages" class="page-item">
             <span class="page-link">...</span>
         </li>
-        <li class="page-item next">
+        <li *ngIf="countPages !== 0" class="page-item next">
             <a (click)="next()" [class.disabled]="selected == countPages" class="page-link" aria-label="Next">
                 <i class="material-icons">keyboard_arrow_right</i>
             </a>
