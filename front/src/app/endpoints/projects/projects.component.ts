@@ -16,6 +16,9 @@ export class ProjectsComponent implements OnInit {
     totalCountProjects: number;
     limit: number;
     page: number;
+    projectModal: string;
+    taskModal: string;
+    activeProject: any;
 
     constructor(
         private projectService: ProjectService,
@@ -27,6 +30,11 @@ export class ProjectsComponent implements OnInit {
         this.totalCountProjects = 0;
         this.limit = 3;
         this.page = 1;
+
+        this.projectModal = 'projectModal';
+        this.taskModal = 'taskModal';
+        this.activeProject = {};
+
     }
 
     ngOnInit(): void {
@@ -44,8 +52,8 @@ export class ProjectsComponent implements OnInit {
         this.search(false);
     }
 
-    openModal() {
-        this.modalService.open('projectModal');
+    openModal(id: string) {
+        this.modalService.open(id);
     }
 
     search(isLoading = true) {

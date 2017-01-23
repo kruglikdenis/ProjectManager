@@ -2,6 +2,7 @@
     <pm-search [isLoading]="isLoading" (onChangeSearch)="changeSearchQuery($event)"></pm-search>
     <table class="table">
         <tbody *ngFor="let project of projects">
+
             <tr role="row" >
                 <td>{{ project.code }}</td>
                 <td>{{ project.title }}</td>
@@ -11,13 +12,18 @@
             <tr role="row" *ngIf="project.taskShow">
                 <table class="table">
                     <tbody>
-                        <tr role="row" *ngFor="let task of project.getFixTasks()">
+                        <tr role="row" *ngFor="let task of project.tasks">
                             <td>{{ task.id }}</td>
                             <td>{{ task.title }}</td>
                             <td>{{ task.description }}</td>
                             <td>{{ task.created }}</td>
                             <td>{{ task.resolution ? 'Yes' : 'No'}}</td>
-                            <td><div (click)="editTask(project, task)" class="action"><i class="material-icons">edit</i></div></td>
+                            <td>
+                                <div (click)="editTask(project, task)" class="action"><i class="material-icons">edit</i></div></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div (click)="activeProject = project; openModal(taskModal)" class="action"><i class="material-icons">add</i></div></td>
                         </tr>
                     </tbody>
 
@@ -29,8 +35,9 @@
     </pm-pagination>
 </div>
 
-<a (click)="openModal()" class="add-project-btn">
+<a (click)="openModal(projectModal)" class="add-project-btn">
     <i class="material-icons">add</i>
 </a>
 
 <pm-project-modal></pm-project-modal>
+<pm-task-modal [project]="activeProject"></pm-task-modal>

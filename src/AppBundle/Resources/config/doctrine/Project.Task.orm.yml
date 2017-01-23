@@ -1,6 +1,6 @@
-CoreDomain\Model\Project\Project:
+CoreDomain\Model\Project\Task:
     type: entity
-    table: projects
+    table: tasks
     id:
         id:
             type: integer
@@ -19,6 +19,16 @@ CoreDomain\Model\Project\Project:
             type: string
             unique: true
             nullable: false
+        estimate:
+            column: estimate
+            type: string
+            nullable: true
+        resolution:
+            column: resolution
+            type: boolean
+            nullable: true
+            options:
+                default: false
         createdAt:
             column: created_at
             type: integer
@@ -37,8 +47,12 @@ CoreDomain\Model\Project\Project:
             nullable: true
             options:
                 default: false
-    oneToMany:
-        tasks:
-            targetEntity: CoreDomain\Model\Project\Task
-            name: project_id
-            mappedBy: project
+    manyToOne:
+        project:
+            targetEntity: CoreDomain\Model\Project\Project
+            inversedBy: tasks
+            joinColumn:
+                name: project_id
+                nullable: false
+                referencedColumnName: id
+                onDelete: CASCADE

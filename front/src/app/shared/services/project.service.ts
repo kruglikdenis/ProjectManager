@@ -6,6 +6,7 @@ import { Project } from '../models/project';
 @Injectable()
 export class ProjectService {
     private PROJECT_URL: string = '/projects';
+    private TASK_URL: string = '/tasks';
 
     constructor(
         private restClient: BaseRestClient,
@@ -26,6 +27,10 @@ export class ProjectService {
 
     save(project: Project) {
         return this.restClient.post(this.PROJECT_URL, project);
+    }
+
+    addTask() {
+        return
     }
 }
 

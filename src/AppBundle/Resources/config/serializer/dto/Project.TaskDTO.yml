@@ -1,0 +1,18 @@
+CoreDomain\DTO\Project\TaskDTO:
+    exclusion_policy: ALL
+    properties:
+        title:
+            type: string
+            groups: [api_task_create, api_task_update]
+        description:
+            type: string
+            groups: [api_task_create, api_task_update]
+        code:
+            type: string
+            groups: [api_task_create, api_task_update]
+        estimate:
+            type: string
+            groups: [api_task_create, api_task_update]
+        resolution:
+            type: boolean
+            groups: [api_task_create, api_task_update]

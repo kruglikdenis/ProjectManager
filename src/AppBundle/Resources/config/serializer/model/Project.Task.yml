@@ -1,0 +1,33 @@
+CoreDomain\Model\Project\Task:
+    exclusion_policy: ALL
+    properties:
+        id:
+            type: integer
+            groups:
+                - api_task_get
+                - api_task_search
+        title:
+            type: string
+            groups:
+                - api_task_get
+                - api_task_search
+        description:
+            type: string
+            groups:
+                - api_task_get
+                - api_task_search
+        code:
+            type: string
+            groups:
+                - api_task_get
+                - api_task_search
+        estimate:
+            type: string
+            groups:
+                - api_task_get
+                - api_task_search
+        resolution:
+            type: boolean
+            groups:
+                - api_task_get
+                - api_task_search

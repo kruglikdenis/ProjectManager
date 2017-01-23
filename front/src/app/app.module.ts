@@ -8,6 +8,7 @@ import { HomeComponent } from './endpoints/home/home.component';
 import { ProjectsComponent } from './endpoints/projects/projects.component';
 import { LoginModalComponent } from './endpoints/login-modal/login-modal.component';
 import { ProjectModalComponent } from './endpoints/projects/project-modal/project-modal.component';
+import { TaskModalComponent } from './endpoints/projects/task-modal/task-modal.component';
 import { RegisterModalComponent } from './endpoints/register-modal/register-modal.component';
 import { NavbarComponent } from './endpoints/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
@@ -39,6 +40,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
         NavbarComponent,
         HomeComponent,
         ProjectModalComponent,
+        TaskModalComponent,
         ProjectsComponent,
         SearchComponent,
         PaginationComponent,

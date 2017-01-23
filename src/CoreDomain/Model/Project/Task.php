@@ -2,14 +2,17 @@
 
 namespace CoreDomain\Model\Project;
 
-class Project
+class Task
 {
     private $id;
 
     private $title;
     private $description;
     private $code;
-    private $tasks;
+    private $project;
+
+    private $estimate;
+    private $resolution;
 
     private $createdAt;
     private $updatedAt;
@@ -23,10 +26,12 @@ class Project
         $this->isDeleted = false;
     }
 
-    public function updateInfo($title, $description, $code) {
+    public function updateInfo($title, $description, $code, $resolution, $estimate) {
         $this->title = $title;
         $this->description = $description;
         $this->code = $code;
+        $this->resolution = $resolution;
+        $this->estimate = $estimate;
 
         $this->updatedAt = (new \DateTime())->getTimestamp();
     }
@@ -55,6 +60,16 @@ class Project
     public function isIsDeleted()
     {
         return $this->isDeleted;
+    }
+
+    public function getEstimate()
+    {
+        return $this->estimate;
+    }
+
+    public function getResolution()
+    {
+        return $this->resolution;
     }
 
 }
