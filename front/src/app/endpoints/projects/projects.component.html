@@ -1,10 +1,27 @@
 <div class="container">
     <pm-search [isLoading]="isLoading" (onChangeSearch)="changeSearchQuery($event)"></pm-search>
     <table class="table">
-        <tbody>
-            <tr *ngFor="let project of projects" role="row">
+        <tbody *ngFor="let project of projects">
+            <tr role="row" >
                 <td>{{ project.code }}</td>
                 <td>{{ project.title }}</td>
+                <td>{{ project.description }}</td>
+                <td><div (click)="taskShow(project)" class="action"><i class="material-icons">list</i></div></td>
+            </tr>
+            <tr role="row" *ngIf="project.taskShow">
+                <table class="table">
+                    <tbody>
+                        <tr role="row" *ngFor="let task of project.getFixTasks()">
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.description }}</td>
+                            <td>{{ task.created }}</td>
+                            <td>{{ task.resolution ? 'Yes' : 'No'}}</td>
+                            <td><div (click)="editTask(project, task)" class="action"><i class="material-icons">edit</i></div></td>
+                        </tr>
+                    </tbody>
+
+                </table>
             </tr>
         </tbody>
     </table>

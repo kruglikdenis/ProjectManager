@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ValueChanged } from '../../../shared/validation/core/ValueChanged';
-import { ProjectService } from "../../../shared/services/project.service";
-import { Project } from "../../../shared/models/project";
+import { ProjectService } from '../../../shared/services/project.service';
+import { Project } from '../../../shared/models/project';
 
 @Component({
     selector: 'pm-project-modal',
     templateUrl: './project-modal.component.html',
     styleUrls: ['./project-modal.component.scss'],
 })
-export class ProjectModalComponent extends ValueChanged implements OnInit {
+export class ProjectModalComponent extends ValueChanged {
     id: string = 'projectModal';
 
     projectForm: FormGroup;

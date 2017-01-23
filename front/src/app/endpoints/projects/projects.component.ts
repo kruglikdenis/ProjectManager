@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit {
 
         this.searchQuery = '';
         this.totalCountProjects = 0;
-        this.limit = 10;
+        this.limit = 3;
         this.page = 1;
     }
 
@@ -41,14 +41,15 @@ export class ProjectsComponent implements OnInit {
 
     changePage(page) {
         this.page = page;
+        this.search(false);
     }
 
     openModal() {
         this.modalService.open('projectModal');
     }
 
-    search() {
-        this.isLoading = true;
+    search(isLoading = true) {
+        this.isLoading = isLoading;
 
         this.projectService.search(this.searchQuery, this.limit, this.page)
             .then(({ projects, totalCount }) => {
@@ -58,5 +59,9 @@ export class ProjectsComponent implements OnInit {
                 this.isLoading = false;
             })
         ;
+    }
+
+    taskShow(project) {
+        project.taskShow = !project.taskShow;
     }
 }

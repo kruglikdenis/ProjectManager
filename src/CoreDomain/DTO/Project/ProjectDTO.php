@@ -8,7 +8,7 @@ class ProjectDTO
     private $description;
     private $code;
 
-    public function __construct($title, $description, $code = '')
+    public function __construct($title, $description, $code)
     {
         $this->title = $title;
         $this->description = $description;

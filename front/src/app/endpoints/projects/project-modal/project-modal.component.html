@@ -8,24 +8,25 @@
         <form class="container">
             <div class="md-form">
                 <i class="material-icons prefix">assessment</i>
-                <input id="ident" type="text" class="form-control">
+                <input id="ident" type="text" class="form-control" [(ngModel)]="project.code" name="code">
+
                 <label for="ident">Identifier</label>
             </div>
 
             <div class="md-form">
                 <i class="material-icons prefix">subtitles</i>
-                <input id="title" type="text" class="form-control">
+                <input id="title" type="text" class="form-control" [(ngModel)]="project.title" name="title">
                 <label for="title">Title</label>
             </div>
 
             <div class="md-form">
                 <i class="material-icons prefix">description</i>
-                <textarea type="text" id="description" class="md-textarea"></textarea>
+                <textarea type="text" id="description" class="md-textarea" [(ngModel)]="project.description" name="description"></textarea>
                 <label for="description">Description</label>
             </div>
 
             <div class="text-xs-center">
-                <button class="btn btn-default btn-lg">
+                <button class="btn btn-default btn-lg" (click)="save()">
                     <span>Save</span>
                 </button>
             </div>

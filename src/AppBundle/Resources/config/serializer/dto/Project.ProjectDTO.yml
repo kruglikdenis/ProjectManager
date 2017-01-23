@@ -1,12 +1,12 @@
-CoreDomain\DTO\User\UserRegisterDTO:
+CoreDomain\DTO\Project\ProjectDTO:
     exclusion_policy: ALL
     properties:
         title:
             type: string
-            groups: [api_user_create, api_user_update]
+            groups: [api_project_create, api_project_update]
         description:
             type: string
-            groups: [api_user_create, api_user_update]
+            groups: [api_project_create, api_project_update]
         code:
             type: string
-            groups: [api_user_create, api_user_update]
+            groups: [api_project_create, api_project_update]

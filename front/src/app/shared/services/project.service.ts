@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseRestClient } from '../api/clients/base.rest-client';
 import { ProjectListTransformer } from '../api/transformers/project-list.transformer';
-import { Project } from "../models/project";
+import { Project } from '../models/project';
 
 @Injectable()
 export class ProjectService {
