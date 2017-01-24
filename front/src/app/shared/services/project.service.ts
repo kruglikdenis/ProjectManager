@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseRestClient } from '../api/clients/base.rest-client';
 import { ProjectListTransformer } from '../api/transformers/project-list.transformer';
 import { Project } from '../models/project';
+import { ProjectTask } from '../models/project-task';
 
 @Injectable()
 export class ProjectService {
@@ -26,11 +27,11 @@ export class ProjectService {
     }
 
     save(project: Project) {
-        return this.restClient.post(this.PROJECT_URL, project);
+        return project.id ? this.restClient.patch(this.PROJECT_URL + '/' + project.id, project) : this.restClient.post(this.PROJECT_URL, project);
     }
 
-    addTask() {
-        return
+    saveTask(task: ProjectTask) {
+       return task.id ? this.restClient.patch(this.TASK_URL + '/' + task.id, task) : this.restClient.post(this.TASK_URL, task);
     }
 }
 

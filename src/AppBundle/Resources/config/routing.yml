@@ -12,3 +12,8 @@ app_session:
     resource: AppBundle\Controller\User\UserSessionController
     type: rest
     name_prefix: session_
+
+app_task:
+    resource: AppBundle\Controller\Project\TaskController
+    type: rest
+    name_prefix: task_

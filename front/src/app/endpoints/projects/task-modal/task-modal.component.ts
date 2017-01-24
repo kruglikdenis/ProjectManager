@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ValueChanged } from '../../../shared/validation/core/ValueChanged';
 import { ProjectService } from '../../../shared/services/project.service';
@@ -10,30 +10,24 @@ import { Project } from '../../../shared/models/project';
     templateUrl: './task-modal.component.html',
     styleUrls: ['./task-modal.component.scss'],
 })
-export class TaskModalComponent extends ValueChanged implements OnInit{
+export class TaskModalComponent extends ValueChanged{
 
-    @Input() project:any;
+    @Input() project:Project;
+    @Input() task: ProjectTask;
 
     id: string = 'taskModal';
 
     taskForm: FormGroup;
-    task: ProjectTask;
 
     constructor( private projectService: ProjectService ) {
         super();
-        this.task = new ProjectTask({});
+        this.task = this.task || new ProjectTask({});
     }
-
-    ngOnInit(): void {
-
-    }
-
 
     save() {
-        this.project.addTask(this.task);
+        this.task.project = this.project.id;
 
-        //
-        // this.projectService.save(this.project)
-        //     .then(() => console.log('Project save'));
+        this.projectService
+            .saveTask(this.task);
     }
 }

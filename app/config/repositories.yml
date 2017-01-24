@@ -14,3 +14,8 @@ services:
         class: AppBundle\Repository\User\UserSessionRepository
         arguments:
             - "@doctrine.orm.default_entity_manager"
+
+    app.repository.project.task:
+        class: AppBundle\Repository\Project\TaskRepository
+        arguments:
+            - "@doctrine.orm.default_entity_manager"

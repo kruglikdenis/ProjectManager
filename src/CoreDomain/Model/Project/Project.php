@@ -57,4 +57,10 @@ class Project
         return $this->isDeleted;
     }
 
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+
+
 }

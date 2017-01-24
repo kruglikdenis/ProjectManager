@@ -17,8 +17,7 @@ CoreDomain\Model\Project\Task:
         code:
             column: code
             type: string
-            unique: true
-            nullable: false
+            nullable: true
         estimate:
             column: estimate
             type: string

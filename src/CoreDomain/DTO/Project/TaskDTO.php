@@ -9,6 +9,7 @@ class TaskDTO
     private $code;
     private $resolution;
     private $estimate;
+    private $project;
 
     public function __construct($title, $description, $code, $resolution, $estimate)
     {
@@ -43,6 +44,17 @@ class TaskDTO
     {
         return $this->estimate;
     }
+
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
 
 
 

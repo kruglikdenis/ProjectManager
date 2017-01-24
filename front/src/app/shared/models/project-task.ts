@@ -1,3 +1,5 @@
+import { Project } from './project';
+
 export class ProjectTask {
     id: number;
 
@@ -12,6 +14,7 @@ export class ProjectTask {
 
     resolution: boolean;
 
+    project: Project;
 
     constructor(resource) {
         this.id = resource.id || 0;
@@ -22,5 +25,10 @@ export class ProjectTask {
         this.created = resource.created || '';
         this.closed = resource.closed || '';
         this.resolution = resource.resolution || false;
+    }
+
+    setProject(project: Project) {
+        console.log(this.project,"-123123123")
+        this.project = this.project || project;
     }
 }

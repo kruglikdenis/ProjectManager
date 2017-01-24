@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Project\Task;
+namespace AppBundle\Controller\Project;
 
 use CoreDomain\DTO\Project\SearchTaskDTO;
 use CoreDomain\DTO\Project\TaskDTO;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * @Rest\Get("/tasks")

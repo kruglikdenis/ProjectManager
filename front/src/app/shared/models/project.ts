@@ -1,4 +1,5 @@
 import {ProjectTask} from './project-task';
+
 export class Project {
     id: number;
 
@@ -16,7 +17,7 @@ export class Project {
         this.tasks = resource.tasks || [];
     }
 
-    addTask() {
-        this.tasks.push(new ProjectTask({code: this.code}));
+    addTask(task: ProjectTask) {
+        this.tasks.push(task);
     }
 }

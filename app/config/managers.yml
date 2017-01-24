@@ -1,9 +1,17 @@
 services:
 
+    #Project
     app.managers.project.project:
         class: AppBundle\Services\Managers\Project\ProjectManager
         arguments:
             - "@doctrine.orm.default_entity_manager"
+            - "@app.repository.project.project"
+
+    app.managers.project.task:
+        class: AppBundle\Services\Managers\Project\TaskManager
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+            - "@app.repository.project.task"
             - "@app.repository.project.project"
 
     # User

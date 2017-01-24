@@ -26,12 +26,13 @@ class Task
         $this->isDeleted = false;
     }
 
-    public function updateInfo($title, $description, $code, $resolution, $estimate) {
+    public function updateInfo($title, $description, $code, $resolution, $estimate, Project $project) {
         $this->title = $title;
         $this->description = $description;
         $this->code = $code;
         $this->resolution = $resolution;
         $this->estimate = $estimate;
+        $this->project = $project;
 
         $this->updatedAt = (new \DateTime())->getTimestamp();
     }

@@ -6,16 +6,19 @@ CoreDomain\Model\Project\Task:
             groups:
                 - api_task_get
                 - api_task_search
+                - api_project_search
         title:
             type: string
             groups:
                 - api_task_get
                 - api_task_search
+                - api_project_search
         description:
             type: string
             groups:
                 - api_task_get
                 - api_task_search
+                - api_project_search
         code:
             type: string
             groups:
@@ -26,8 +29,10 @@ CoreDomain\Model\Project\Task:
             groups:
                 - api_task_get
                 - api_task_search
+                - api_project_search
         resolution:
             type: boolean
             groups:
                 - api_task_get
                 - api_task_search
+                - api_project_search

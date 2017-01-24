@@ -21,3 +21,8 @@ CoreDomain\Model\Project\Project:
             groups:
                 - api_project_get
                 - api_project_search
+        tasks:
+            type: CoreDomain\Model\Project\Task
+            groups:
+                - api_project_get
+                - api_project_search

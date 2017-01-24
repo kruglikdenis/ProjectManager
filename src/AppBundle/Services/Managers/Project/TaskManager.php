@@ -6,6 +6,7 @@ use CoreDomain\DTO\Project\SearchTaskDTO;
 use CoreDomain\DTO\Project\TaskDTO;
 use CoreDomain\Model\Project\Task;
 use CoreDomain\Repository\Project\TaskRepositoryInterface;
+use CoreDomain\Repository\Project\ProjectRepositoryInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -13,11 +14,15 @@ class TaskManager
 {
     private $em;
     private $taskRepository;
+    private $projectRepository;
 
     public function __construct(EntityManagerInterface $entityManager,
-                                TaskRepositoryInterface $taskRepository)
+                                TaskRepositoryInterface $taskRepository,
+                                ProjectRepositoryInterface $projectRepository)
     {
         $this->taskRepository = $taskRepository;
+        $this->projectRepository = $projectRepository;
+
         $this->em = $entityManager;
     }
 
@@ -35,6 +40,10 @@ class TaskManager
     {
         $this->em->beginTransaction();
         try {
+            $project = $this->projectRepository->findOneById($taskDTO->getProject());
+            if(!$project) {
+                throw new \Exception('Project not found');
+            }
 
             $task = new Task();
 
@@ -43,7 +52,8 @@ class TaskManager
                 $taskDTO->getDescription(),
                 $taskDTO->getCode(),
                 $taskDTO->getResolution(),
-                $taskDTO->getEstimate()
+                $taskDTO->getEstimate(),
+                $project
             );
             $this->taskRepository->addAndSave($task);
             $this->em->commit();
@@ -59,9 +69,14 @@ class TaskManager
         $this->em->beginTransaction();
         try {
 
+            $project = $this->projectRepository->findOneById($taskDTO->getProject());
+            if(!$project) {
+                throw new \Exception('Project not found');
+            }
+
             $task = $this->taskRepository->findOneById($id);
             if(!$task) {
-                throw new \Exception("Проект не существует");
+                throw new \Exception("Task not found");
             }
 
             $task->updateInfo(
@@ -69,7 +84,8 @@ class TaskManager
                 $taskDTO->getDescription(),
                 $taskDTO->getCode(),
                 $taskDTO->getResolution(),
-                $taskDTO->getEstimate()
+                $taskDTO->getEstimate(),
+                $project
             );
             $this->taskRepository->addAndSave($task);
             $this->em->commit();

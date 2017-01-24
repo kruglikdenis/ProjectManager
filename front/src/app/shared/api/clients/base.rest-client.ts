@@ -42,6 +42,14 @@ export class BaseRestClient {
         return this.toPromice(observable, transformer);
     }
 
+    public patch(url, data, transformer: ITransformer = null) {
+        let observable = this.authorize()
+            .http
+            .patch(AppSettings.API_ENDPOINT + url, data, {headers: this.headers});
+
+        return this.toPromice(observable, transformer);
+    }
+
     public delete(url, transformer: ITransformer = null) {
         let observable = this.authorize()
             .http

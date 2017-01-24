@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../shared/models/project';
+import { ProjectTask } from '../../shared/models/project-task';
 import { ProjectService } from '../../shared/services/project.service';
 import { ModalService } from '../../shared/services/modal.service';
 
@@ -19,6 +20,7 @@ export class ProjectsComponent implements OnInit {
     projectModal: string;
     taskModal: string;
     activeProject: any;
+    activeTask: any;
 
     constructor(
         private projectService: ProjectService,
@@ -34,6 +36,7 @@ export class ProjectsComponent implements OnInit {
         this.projectModal = 'projectModal';
         this.taskModal = 'taskModal';
         this.activeProject = {};
+        this.activeTask = {};
 
     }
 
@@ -69,7 +72,9 @@ export class ProjectsComponent implements OnInit {
         ;
     }
 
-    taskShow(project) {
-        project.taskShow = !project.taskShow;
+    modalTask(project: Project, task: ProjectTask) {
+        this.activeProject = project;
+        this.activeTask = task;
+        this.openModal(this.taskModal);
     }
 }

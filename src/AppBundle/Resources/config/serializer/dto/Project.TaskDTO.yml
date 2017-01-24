@@ -16,3 +16,6 @@ CoreDomain\DTO\Project\TaskDTO:
         resolution:
             type: boolean
             groups: [api_task_create, api_task_update]
+        project:
+            type: string
+            groups: [api_task_create, api_task_update]
