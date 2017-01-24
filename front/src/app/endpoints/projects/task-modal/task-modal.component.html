@@ -24,6 +24,13 @@
                 <label for="description" [ngClass]="{'active': !!task.description}">Description</label>
             </div>
 
+            <div class="md-form">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="task.resolution" name="resolution">
+                    Resolution
+                </label>
+            </div>
+
             <div class="text-xs-center">
                 <button class="btn btn-default btn-lg" (click)="save()">
                     <span>Save</span>
