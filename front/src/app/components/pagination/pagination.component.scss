@@ -15,6 +15,7 @@
   a {
     @include active();
     color: #004d40;
+    margin: 0 10px;
     background-color: inherit;
     &:hover {
       background-color: inherit;

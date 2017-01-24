@@ -7,22 +7,21 @@
     <pm-modal-body>
         <form class="container">
             <div class="md-form">
-                <i class="material-icons prefix">assessment</i>
+                <i class="material-icons prefix" >assessment</i>
                 <input id="estimate" type="text" class="form-control" [(ngModel)]="task.estimate" name="estimate">
-
-                <label for="estimate">Estimate</label>
+                <label for="estimate" [ngClass]="{'active': !!task.estimate}">Estimate</label>
             </div>
 
             <div class="md-form">
                 <i class="material-icons prefix">title</i>
                 <input id="title" type="text" class="form-control" [(ngModel)]="task.title" name="title">
-                <label for="title">Title</label>
+                <label for="title" [ngClass]="{'active': !!task.title}">Title</label>
             </div>
 
             <div class="md-form">
                 <i class="material-icons prefix">description</i>
                 <textarea type="text" id="description" class="md-textarea" [(ngModel)]="task.description" name="description"></textarea>
-                <label for="description">Description</label>
+                <label for="description" [ngClass]="{'active': !!task.description}">Description</label>
             </div>
 
             <div class="text-xs-center">

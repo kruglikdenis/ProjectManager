@@ -7,14 +7,14 @@ export class Project {
     description: string;
     code: string;
 
-    tasks: ProjectTask[] = [];
+    tasks: Array<ProjectTask> = [];
 
     constructor(resource) {
         this.id = resource.id || 0;
         this.title = resource.title || '';
         this.description = resource.description || '';
         this.code = resource.code || '';
-        this.tasks = resource.tasks || [];
+        this.tasks = resource.tasks ? resource.tasks.map((item) => {return new ProjectTask(item)}) : [];
     }
 
     addTask(task: ProjectTask) {

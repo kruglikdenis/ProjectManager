@@ -7,23 +7,28 @@
                 <td>{{ project.code }}</td>
                 <td>{{ project.title }}</td>
                 <td>{{ project.description }}</td>
-                <td><div (click)="project.taskShow = project.taskShow ? false : true;" class="action"><i class="material-icons">list</i></div></td>
+                <td>
+                    <div (click)="project.taskShow = project.taskShow ? false : true;" class="action"><i class="material-icons">list</i></div>
+                </td>
+                <td>
+                    <div (click)="preModal(projectModal, project);" class="action"><i class="material-icons">edit</i></div>
+                </td>
             </tr>
             <tr role="row" *ngIf="project.taskShow">
                 <table class="table">
                     <tbody>
-                        <tr role="row" *ngFor="let task of project.tasks">
+                        <tr role="row" *ngFor="let task of project.tasks" class="task-list">
                             <td>{{ task.id }}</td>
                             <td>{{ task.title }}</td>
                             <td>{{ task.description }}</td>
                             <td>{{ task.created }}</td>
                             <td>{{ task.resolution ? 'Yes' : 'No'}}</td>
                             <td>
-                                <div (click)="modalTask(project, task)" class="action"><i class="material-icons">edit</i></div></td>
+                                <div (click)="preModal(taskModal, project, task)" class="action"><i class="material-icons">edit</i></div></td>
                         </tr>
                         <tr>
                             <td>
-                                <div (click)="modalTask(project)" class="action"><i class="material-icons">add</i></div></td>
+                                <div (click)="preModal(taskModal, project)" class="action"><i class="material-icons">add</i></div></td>
                         </tr>
                     </tbody>
 
@@ -35,10 +40,11 @@
     </pm-pagination>
 </div>
 
-<a (click)="openModal(projectModal)" class="add-project-btn">
+<a (click)="preModal(projectModal)" class="add-project-btn">
     <i class="material-icons">add</i>
 </a>
 
 <pm-task-modal [project]="activeProject" [task]="activeTask"></pm-task-modal>
-<pm-project-modal></pm-project-modal>
+<pm-project-modal [project]="activeProject"></pm-project-modal>
+<!--<pm-project-modal></pm-project-modal>-->
 

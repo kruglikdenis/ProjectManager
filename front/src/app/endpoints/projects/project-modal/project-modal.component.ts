@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ValueChanged } from '../../../shared/validation/core/ValueChanged';
 import { ProjectService } from '../../../shared/services/project.service';
@@ -12,16 +12,23 @@ import { Project } from '../../../shared/models/project';
 export class ProjectModalComponent extends ValueChanged {
     id: string = 'projectModal';
 
+    @Input() project:Project = new Project({});
+
     projectForm: FormGroup;
-    project: Project;
+    // project: Project;
 
     constructor( private projectService: ProjectService ) {
         super();
-        this.project = new Project({});
+        // this.project = this.project || new Project({});
     }
 
     save() {
         this.projectService.save(this.project)
-            .then(() => this.project = new Project({}));
+            .then(() => {
+                    if (!this.project.id) {
+                        this.project = new Project({})
+                    }
+                }
+            );
     }
 }

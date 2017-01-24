@@ -52,17 +52,20 @@ tbody {
       transition-property: all;
       transition-duration: .3s;
       margin: 10px auto;
+      color: #7a7f86;
+      cursor: default;
 
       &:not(.shown):hover {
         position: relative;
         color: #2f3436;
         box-shadow: 0 0 15px 1px rgba(47,52,54,.35);
       }
-
+      &:hover {
+        color: black;
+      }
       td {
         font-size: 1rem;
         line-height: 1.5;
-        color: #7a7f86;
         border-top: 0px;
       }
     }

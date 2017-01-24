@@ -72,9 +72,9 @@ export class ProjectsComponent implements OnInit {
         ;
     }
 
-    modalTask(project: Project, task: ProjectTask) {
-        this.activeProject = project;
-        this.activeTask = task;
-        this.openModal(this.taskModal);
+    preModal(idModal: string, project: Project, task: ProjectTask) {
+        this.activeProject = project ? project : new Project({});
+        this.activeTask = task ? task : new ProjectTask({});
+        this.openModal(idModal);
     }
 }
